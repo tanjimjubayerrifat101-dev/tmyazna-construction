@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #101010;
+  --dark-blue: #004187;
+  --light-blue: #0086ff;
+  --light-black: #101010;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--dark-blue);
+  --color-secondary: var(--light-blue);
+  --color-light-black: var(--light-black);
+
+  --font-primary: var(--font-space-grotesk);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer components {
+  .container {
+    @apply max-w-360 w-full mx-auto px-5 md:px-10 lg:px-15;
+  }
+}
+
+body {
+  font-family: var(--font-primary), sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+
+@keyframes navMenuSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-nav-dropdown {
+  animation: navMenuSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
+.nav-rolling-text-wrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 24px;
+  line-height: 24px;
+}
+
+.nav-rolling-text-wrap .nav-text-item {
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.nav-rolling-text-wrap .nav-text-duplicate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  color: var(--dark-blue);
+}
+
+.group:hover .nav-rolling-text-wrap .nav-text-primary {
+  transform: translateY(100%);
+}
+
+.group:hover .nav-rolling-text-wrap .nav-text-duplicate {
+  transform: translateY(0%);
+}
+
+
+

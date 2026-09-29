@@ -1,0 +1,35 @@
+import { Building2, Star, Users, Award, ShieldCheck, type LucideIcon } from 'lucide-react';
+
+export type NavChild = { key: string; href: string; icon: LucideIcon };
+export type NavGroup = { groupKey: string; items: NavChild[] };
+export type NavItem = { key: string; href?: string; groups?: NavGroup[] };
+
+export const NAV: NavItem[] = [
+  {
+    key: 'about',
+    groups: [
+      { groupKey: 'company', items: [
+        { key: 'aboutTmyazna', href: '/about', icon: Building2 },
+        { key: 'mvv', href: '/mission-vision-values', icon: Star },
+      ]},
+      { groupKey: 'people', items: [
+        { key: 'leadership', href: '/leadership', icon: Users },
+      ]},
+    ],
+  },
+  { key: 'services', href: '/services' },
+  { key: 'projects', href: '/projects' },
+  {
+    key: 'credentials',
+    groups: [
+      // PLACEHOLDER: live site-er asol link diye replace koro
+      { groupKey: 'quality', items: [
+        { key: 'certificates', href: '/credentials/certificates', icon: Award },
+        { key: 'accreditations', href: '/credentials/accreditations', icon: ShieldCheck },
+      ]},
+    ],
+  },
+  { key: 'media', href: '/media' },
+  { key: 'careers', href: '/careers' },
+  { key: 'contact', href: '/contact' },
+];

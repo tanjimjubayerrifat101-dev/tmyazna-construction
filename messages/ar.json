@@ -1,0 +1,20 @@
+{
+  "Nav": {
+    "menu": {
+      "about": "من نحن", "services": "خدماتنا", "projects": "مشاريعنا",
+      "credentials": "اعتماداتنا", "media": "المركز الإعلامي",
+      "careers": "الوظائف", "contact": "اتصل بنا"
+    },
+    "groups": { "company": "الشركة", "people": "الأفراد", "quality": "الجودة" },
+    "links": {
+      "aboutTmyazna": "عن تميزنا",
+      "mvv": "الرسالة والرؤية والقيم",
+      "leadership": "قيادتنا",
+      "certificates": "الشهادات",
+      "accreditations": "الاعتمادات"
+    },
+    "search": "بحث",
+    "noResults": "لم يتم العثور على عناصر",
+    "switch": "EN"
+  }
+}
