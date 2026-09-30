@@ -22,7 +22,7 @@
 
 @layer components {
   .container {
-    @apply max-w-360 w-full mx-auto px-5 md:px-10 lg:px-15;
+    @apply max-w-360 w-full mx-auto px-4 md:px-10 lg:px-15;
   }
 }
 

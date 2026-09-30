@@ -2,12 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Search, ArrowRight, Menu, X } from "lucide-react";
+import { ChevronDown, Search, ArrowRight, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAV, type NavItem } from "@/data/navigation";
-
+import gsap from "gsap";
 import Image from "next/image";
-
 import logo from "@/assets/navbar/tmyzna-logo.png";
 
 export default function Navbar() {
@@ -29,7 +28,23 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
-  // Automatically build dynamic searchable items list directly from NAV data
+  // Desktop dropdown menu refs & animation tracking
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const prevActiveMenuRef = useRef<string | null>(null);
+
+  // Mobile drawer refs
+  const mobileBackdropRef = useRef<HTMLDivElement>(null);
+  const mobileDrawerRef = useRef<HTMLDivElement>(null);
+
+  // Hamburger lines refs for clean 3-line to X animation
+  const burgerTopRef = useRef<HTMLSpanElement>(null);
+  const burgerMidRef = useRef<HTMLSpanElement>(null);
+  const burgerBotRef = useRef<HTMLSpanElement>(null);
+
+  // Mobile submenu animation ref map
+  const mobileSubmenuRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  // Dynamic searchable items
   const allSearchableItems = NAV.flatMap((item) => {
     const list: { label: string; href: string; parent?: string }[] = [];
     const mainLabel = t(`menu.${item.key}`);
@@ -54,14 +69,13 @@ export default function Navbar() {
     return list;
   });
 
-  // Filter items matching the query in real-time
   const searchResults = searchQuery.trim()
     ? allSearchableItems.filter((item) =>
         item.label.toLowerCase().includes(searchQuery.trim().toLowerCase()),
       )
     : [];
 
-  // Detect scroll to transition from transparent to solid white
+  // Detect scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -80,14 +94,14 @@ export default function Navbar() {
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
-        setActiveMenu(null);
-        setSearchOpen(false);
+        closeDesktopMenu();
+        closeSearch();
       }
     };
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setActiveMenu(null);
-        setSearchOpen(false);
+        closeDesktopMenu();
+        closeSearch();
         setMobileMenuOpen(false);
       }
     };
@@ -100,7 +114,7 @@ export default function Navbar() {
     };
   }, []);
 
-  // Prevent background scroll when tablet/mobile drawer is open
+  // Prevent background scroll when drawer is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -112,7 +126,163 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Smooth hover handlers with small delay to avoid jitter
+  // Smooth Hamburger 3-line <-> X morph via GSAP
+  useEffect(() => {
+    const top = burgerTopRef.current;
+    const mid = burgerMidRef.current;
+    const bot = burgerBotRef.current;
+
+    if (!top || !mid || !bot) return;
+
+    if (mobileMenuOpen) {
+      gsap.to(top, {
+        y: 7,
+        rotation: 45,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+      gsap.to(mid, {
+        opacity: 0,
+        scaleX: 0,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+      gsap.to(bot, {
+        y: -7,
+        rotation: -45,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    } else {
+      gsap.to(top, {
+        y: 0,
+        rotation: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+      gsap.to(mid, {
+        opacity: 1,
+        scaleX: 1,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+      gsap.to(bot, {
+        y: 0,
+        rotation: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  }, [mobileMenuOpen]);
+
+  // Desktop Dropdown Open/Close GSAP Animation
+  useEffect(() => {
+    const el = dropdownRef.current;
+    if (!el) return;
+
+    if (activeMenu) {
+      // If coming from another menu, do a quick cross-fade / height morph
+      gsap.killTweensOf(el);
+      gsap.fromTo(
+        el,
+        {
+          opacity: prevActiveMenuRef.current ? 0.4 : 0,
+          y: prevActiveMenuRef.current ? -4 : -10,
+          scale: 0.98,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        }
+      );
+    }
+    prevActiveMenuRef.current = activeMenu;
+  }, [activeMenu]);
+
+  const closeDesktopMenu = () => {
+    const el = dropdownRef.current;
+    if (el && activeMenu) {
+      gsap.to(el, {
+        opacity: 0,
+        y: -8,
+        scale: 0.98,
+        duration: 0.22,
+        ease: "power2.in",
+        onComplete: () => {
+          setActiveMenu(null);
+          prevActiveMenuRef.current = null;
+        },
+      });
+    } else {
+      setActiveMenu(null);
+      prevActiveMenuRef.current = null;
+    }
+  };
+
+  const closeSearch = () => {
+    const el = searchContainerRef.current;
+    if (el && searchOpen) {
+      gsap.to(el, {
+        opacity: 0,
+        y: -8,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: () => setSearchOpen(false),
+      });
+    } else {
+      setSearchOpen(false);
+    }
+  };
+
+  const toggleSearch = () => {
+    if (searchOpen) {
+      closeSearch();
+    } else {
+      setSearchOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    if (searchOpen && searchContainerRef.current) {
+      gsap.fromTo(
+        searchContainerRef.current,
+        { opacity: 0, y: -10, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.28, ease: "power2.out" }
+      );
+    }
+  }, [searchOpen]);
+
+  // Mobile submenu accordion animation with GSAP
+  useEffect(() => {
+    Object.keys(mobileSubmenuRefs.current).forEach((key) => {
+      const subEl = mobileSubmenuRefs.current[key];
+      if (!subEl) return;
+
+      if (mobileExpandedGroup === key) {
+        gsap.killTweensOf(subEl);
+        gsap.fromTo(
+          subEl,
+          { height: 0, opacity: 0 },
+          { height: "auto", opacity: 1, duration: 0.3, ease: "power2.out" }
+        );
+      } else if (subEl.style.height && subEl.style.height !== "0px") {
+        gsap.to(subEl, {
+          height: 0,
+          opacity: 0,
+          duration: 0.24,
+          ease: "power2.in",
+          onComplete: () => {
+            if (subEl) subEl.style.height = "0px";
+          },
+        });
+      }
+    });
+  }, [mobileExpandedGroup]);
+
+  // Hover handlers with smooth debounce
   const handleMouseEnter = (key: string, hasSubMenu: boolean) => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
@@ -120,7 +290,7 @@ export default function Navbar() {
     if (hasSubMenu) {
       setActiveMenu(key);
     } else {
-      setActiveMenu(null);
+      closeDesktopMenu();
     }
   };
 
@@ -129,8 +299,8 @@ export default function Navbar() {
       clearTimeout(hoverTimeoutRef.current);
     }
     hoverTimeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 180);
+      closeDesktopMenu();
+    }, 200);
   };
 
   const isActive = (item: NavItem) => {
@@ -141,6 +311,8 @@ export default function Navbar() {
       (h) => pathname === h || (h !== "/" && pathname.startsWith(h)),
     );
   };
+
+  const activeItem = NAV.find((item) => item.key === activeMenu);
 
   return (
     <header
@@ -165,7 +337,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Navigation Links (Visible on desktop: lg and above) */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center h-full">
           {NAV.map((item) => {
             const hasChildren = Boolean(item.groups && item.groups.length > 0);
@@ -183,10 +355,15 @@ export default function Navbar() {
                   <button
                     type="button"
                     aria-expanded={isOpen}
-                    onClick={() => setActiveMenu(isOpen ? null : item.key)}
+                    onClick={() => {
+                      if (isOpen) {
+                        closeDesktopMenu();
+                      } else {
+                        setActiveMenu(item.key);
+                      }
+                    }}
                     className="group flex items-center gap-1.5 px-3.5 xl:px-5 h-full text-[15px] font-medium text-gray-800 transition-colors duration-200 cursor-pointer"
                   >
-                    {/* Rolling text ticker: original rolls down, duplicate enters from top with dark-blue */}
                     <span className="nav-rolling-text-wrap">
                       <span className="nav-text-item nav-text-primary">
                         {menuLabel}
@@ -196,7 +373,6 @@ export default function Navbar() {
                       </span>
                     </span>
 
-                    {/* Chevron with light-blue color and rotation */}
                     <ChevronDown
                       size={14}
                       className={`transition-transform duration-300 ease-out text-secondary ${
@@ -211,7 +387,9 @@ export default function Navbar() {
                   >
                     <span className="nav-rolling-text-wrap">
                       <span
-                        className={`nav-text-item nav-text-primary ${itemActive ? "text-primary font-semibold" : ""}`}
+                        className={`nav-text-item nav-text-primary ${
+                          itemActive ? "text-primary font-semibold" : ""
+                        }`}
                       >
                         {menuLabel}
                       </span>
@@ -222,11 +400,12 @@ export default function Navbar() {
                   </Link>
                 )}
 
-                {/* Dropdown Menu - Clean, Sharp Square Corners, Larger Typography */}
+                {/* Dropdown Menu with GSAP Smooth Entrance & Exit */}
                 {hasChildren && isOpen && (
                   <div
+                    ref={dropdownRef}
                     onMouseEnter={() => handleMouseEnter(item.key, true)}
-                    className="absolute inset-s-0 top-full w-80 animate-nav-dropdown origin-top z-50"
+                    className="absolute inset-s-0 top-full w-80 origin-top z-50 will-change-transform"
                   >
                     <div className="bg-white p-6 shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-gray-100 border-t-2 border-t-primary">
                       {item.groups!.map((group, gIdx) => (
@@ -240,11 +419,11 @@ export default function Navbar() {
                             {t(`groups.${group.groupKey}`)}
                           </p>
                           <ul className="space-y-1">
-                            {group.items.map(({ key, href, icon: Icon }) => (
+                            {group.items.map(({ key, href }) => (
                               <li key={key}>
                                 <Link
                                   href={href}
-                                  onClick={() => setActiveMenu(null)}
+                                  onClick={() => closeDesktopMenu()}
                                   className="group/item flex items-center justify-between px-3 py-2.5 text-[15px] text-gray-700 hover:text-primary hover:bg-slate-50 transition-all duration-200"
                                 >
                                   <div className="flex items-center gap-3">
@@ -270,24 +449,24 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Section Actions: Search, Language Switch & Mobile/Tablet Menu Button */}
+        {/* Right Section Actions: Search, Language Switch & Animated Hamburger Menu */}
         <div className="flex items-center gap-3 sm:gap-4 xl:gap-6">
           {/* Search Trigger */}
           <div className="relative hidden md:block">
             <button
               type="button"
-              onClick={() => setSearchOpen(!searchOpen)}
+              onClick={toggleSearch}
               aria-label={t("search")}
               className="flex h-10 w-10 items-center cursor-pointer justify-center rounded-none text-gray-700 hover:text-primary transition-colors duration-200"
             >
               <Search size={20} />
             </button>
 
-            {/* Quick search input flyout with automatic live suggestions */}
+            {/* Quick search input flyout with GSAP animation */}
             {searchOpen && (
               <div
                 ref={searchContainerRef}
-                className="absolute end-0 top-full mt-2 w-80 sm:w-96 rounded-none bg-white p-3 shadow-2xl border border-gray-100 border-t-2 border-t-primary animate-nav-dropdown z-50"
+                className="absolute end-0 top-full mt-2 w-80 sm:w-96 rounded-none bg-white p-3 shadow-2xl border border-gray-100 border-t-2 border-t-primary z-50 will-change-transform"
               >
                 <div className="flex items-center gap-2 bg-gray-50 px-3 py-2.5 border border-gray-200">
                   <Search size={16} className="text-secondary shrink-0" />
@@ -323,7 +502,7 @@ export default function Navbar() {
                           <Link
                             href={item.href}
                             onClick={() => {
-                              setSearchOpen(false);
+                              closeSearch();
                               setSearchQuery("");
                             }}
                             className="group/search flex items-center justify-between px-3 py-2.5 hover:bg-slate-50 transition-colors"
@@ -367,24 +546,32 @@ export default function Navbar() {
             <span>{t("switch")}</span>
           </Link>
 
-          {/* Tablet / Mobile Menu Toggle Button (shown on tablet & mobile, hidden on lg+) */}
+          {/* Tablet / Mobile Menu Toggle Button: 3 straight lines morphing to X on click with NO unwanted skew/rotate on hover */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="group cursor-pointer flex lg:hidden h-10 w-10 items-center justify-center text-gray-800 hover:text-primary transition-all duration-300"
-            aria-label="Open menu"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="relative flex lg:hidden h-10 w-10 flex-col items-center justify-center gap-[5px] cursor-pointer p-2 rounded-md hover:bg-black/5 transition-colors duration-200"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <Menu
-              size={26}
-              className="transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-6"
+            <span
+              ref={burgerTopRef}
+              className="w-6 h-[2px] bg-gray-800 rounded-full origin-center will-change-transform block"
+            />
+            <span
+              ref={burgerMidRef}
+              className="w-6 h-[2px] bg-gray-800 rounded-full origin-center will-change-transform block"
+            />
+            <span
+              ref={burgerBotRef}
+              className="w-6 h-[2px] bg-gray-800 rounded-full origin-center will-change-transform block"
             />
           </button>
         </div>
       </div>
 
-      {/* Premium Tablet & Mobile Drawer with Backdrop & Dedicated Cross (Close) Button */}
+      {/* Tablet & Mobile Drawer with GSAP-like Smooth Transition */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-visibility duration-300 ${
+        className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${
           mobileMenuOpen
             ? "visible pointer-events-auto"
             : "invisible pointer-events-none"
@@ -392,14 +579,16 @@ export default function Navbar() {
       >
         {/* Backdrop Blur with Smooth Fade */}
         <div
+          ref={mobileBackdropRef}
           onClick={() => setMobileMenuOpen(false)}
           className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-out ${
             mobileMenuOpen ? "opacity-100" : "opacity-0"
           }`}
         />
 
-        {/* Drawer Content - Slides in smoothly from Left (start-0) */}
+        {/* Drawer Content */}
         <div
+          ref={mobileDrawerRef}
           className={`fixed inset-y-0 start-0 w-full sm:w-[420px] max-w-[85vw] bg-white shadow-2xl z-10 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             mobileMenuOpen
               ? "translate-x-0"
@@ -409,7 +598,7 @@ export default function Navbar() {
           <div>
             {/* Header inside drawer */}
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <Link href="/">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <Image
                   src={logo}
                   alt="TMYAZNA LOGO"
@@ -417,15 +606,16 @@ export default function Navbar() {
                 />
               </Link>
 
+              {/* Close Button inside drawer */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="group flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:text-red-600 hover:bg-red-50 transition-all duration-200"
+                className="group flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:text-red-600 hover:bg-red-50 transition-all duration-200 cursor-pointer"
                 aria-label="Close menu"
               >
                 <X
                   size={24}
-                  className="transition-transform cursor-pointer duration-200 group-hover:scale-110 group-hover:rotate-90 text-inherit"
+                  className="transition-transform duration-200 group-hover:scale-110 text-inherit"
                 />
               </button>
             </div>
@@ -447,19 +637,28 @@ export default function Navbar() {
                           onClick={() =>
                             setMobileExpandedGroup(isExpanded ? null : item.key)
                           }
-                          className="flex w-full items-center justify-between py-2 text-lg font-medium text-gray-800 hover:text-primary transition-colors"
+                          className="flex w-full items-center justify-between py-2 text-lg font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer"
                         >
                           <span>{t(`menu.${item.key}`)}</span>
                           <ChevronDown
                             size={18}
-                            className={`text-secondary transition-transform duration-200 ${
+                            className={`text-secondary transition-transform duration-300 ${
                               isExpanded ? "rotate-180 text-primary" : ""
                             }`}
                           />
                         </button>
 
-                        {isExpanded && (
-                          <div className="ps-3 pt-3 pb-2 space-y-4 animate-nav-dropdown">
+                        <div
+                          ref={(el) => {
+                            mobileSubmenuRefs.current[item.key] = el;
+                          }}
+                          className="overflow-hidden"
+                          style={{
+                            height: isExpanded ? "auto" : 0,
+                            opacity: isExpanded ? 1 : 0,
+                          }}
+                        >
+                          <div className="ps-3 pt-3 pb-2 space-y-4">
                             {item.groups!.map((group) => (
                               <div key={group.groupKey}>
                                 <p className="text-xs font-bold uppercase tracking-wider text-secondary mb-2">
@@ -489,7 +688,7 @@ export default function Navbar() {
                               </div>
                             ))}
                           </div>
-                        )}
+                        </div>
                       </div>
                     ) : (
                       <Link
@@ -505,19 +704,6 @@ export default function Navbar() {
               })}
             </div>
           </div>
-
-          {/* Bottom Footer inside Drawer */}
-          {/* <div className="p-6 border-t border-gray-100 bg-gray-50 flex items-center justify-between">
-            <span className="text-sm text-gray-500">Language</span>
-            <Link
-              href={pathname}
-              locale={otherLocale}
-              onClick={() => setMobileMenuOpen(false)}
-              className="font-semibold text-primary hover:text-secondary text-base"
-            >
-              {t("switch")}
-            </Link>
-          </div> */}
         </div>
       </div>
     </header>

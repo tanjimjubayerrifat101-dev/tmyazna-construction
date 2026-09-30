@@ -16,5 +16,10 @@
     "search": "Search",
     "noResults": "No menu items found",
     "switch": "العربية"
+  },
+  "Hero": {
+    "titlePart1": "Making a",
+    "titlePart2": "Difference",
+    "ctaButton": "What do you want to build?"
   }
 }

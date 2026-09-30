@@ -16,5 +16,10 @@
     "search": "بحث",
     "noResults": "لم يتم العثور على عناصر",
     "switch": "EN"
+  },
+  "Hero": {
+    "titlePart1": "نصنع",
+    "titlePart2": "الفارق",
+    "ctaButton": "ماذا تريد أن تبني؟"
   }
 }
