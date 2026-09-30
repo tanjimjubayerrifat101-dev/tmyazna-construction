@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ChevronDown, Search, ArrowRight, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -88,30 +88,6 @@ export default function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Close when clicking outside or pressing Escape
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (!navRef.current?.contains(e.target as Node)) {
-        closeDesktopMenu();
-        closeSearch();
-      }
-    };
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        closeDesktopMenu();
-        closeSearch();
-        setMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleOutsideClick);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
   }, []);
 
   // Prevent background scroll when drawer is open
@@ -237,6 +213,31 @@ export default function Navbar() {
     }
   };
 
+  const handleOutsideClick = useEffectEvent((e: MouseEvent) => {
+    if (!navRef.current?.contains(e.target as Node)) {
+      closeDesktopMenu();
+      closeSearch();
+    }
+  });
+
+  const handleKeyDown = useEffectEvent((e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      closeDesktopMenu();
+      closeSearch();
+      setMobileMenuOpen(false);
+    }
+  });
+
+  // Close when clicking outside or pressing Escape
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const toggleSearch = () => {
     if (searchOpen) {
       closeSearch();
@@ -315,8 +316,9 @@ export default function Navbar() {
   const activeItem = NAV.find((item) => item.key === activeMenu);
 
   return (
-    <header
-      ref={navRef}
+    <>
+      <header
+        ref={navRef}
       onMouseLeave={handleMouseLeave}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled || activeMenu !== null
@@ -568,144 +570,165 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Tablet & Mobile Drawer with GSAP-like Smooth Transition */}
+    {/* Tablet & Mobile Drawer outside header to prevent backdrop-filter containing block issues */}
+    <div
+      className={`fixed inset-0 z-[100] lg:hidden transition-all duration-300 ${
+        mobileMenuOpen
+          ? "visible pointer-events-auto"
+          : "invisible pointer-events-none"
+      }`}
+    >
+      {/* Backdrop Blur with Smooth Fade */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${
+        ref={mobileBackdropRef}
+        onClick={() => setMobileMenuOpen(false)}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-out ${
+          mobileMenuOpen ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
+      {/* Drawer Content */}
+      <div
+        ref={mobileDrawerRef}
+        className={`fixed inset-y-0 start-0 w-[320px] sm:w-[380px] max-w-[85vw] h-full h-[100dvh] bg-white shadow-2xl z-10 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           mobileMenuOpen
-            ? "visible pointer-events-auto"
-            : "invisible pointer-events-none"
+            ? "translate-x-0"
+            : "-translate-x-full rtl:translate-x-full"
         }`}
       >
-        {/* Backdrop Blur with Smooth Fade */}
-        <div
-          ref={mobileBackdropRef}
-          onClick={() => setMobileMenuOpen(false)}
-          className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-out ${
-            mobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <div className="flex flex-col flex-1">
+          {/* Header inside drawer */}
+          <div className="flex items-center justify-between p-5 border-b border-gray-100">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+              <Image
+                src={logo}
+                alt="TMYAZNA LOGO"
+                className="w-20 sm:w-24"
+              />
+            </Link>
 
-        {/* Drawer Content */}
-        <div
-          ref={mobileDrawerRef}
-          className={`fixed inset-y-0 start-0 w-full sm:w-[420px] max-w-[85vw] bg-white shadow-2xl z-10 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            mobileMenuOpen
-              ? "translate-x-0"
-              : "-translate-x-full rtl:translate-x-full"
-          }`}
-        >
-          <div>
-            {/* Header inside drawer */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                <Image
-                  src={logo}
-                  alt="TMYAZNA LOGO"
-                  className="w-20 lg:w-24 xl:w-28"
-                />
-              </Link>
+            {/* Close Button inside drawer */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="group flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:text-red-600 hover:bg-red-50 transition-all duration-200 cursor-pointer"
+              aria-label="Close menu"
+            >
+              <X
+                size={22}
+                className="transition-transform duration-200 group-hover:scale-110 text-inherit"
+              />
+            </button>
+          </div>
 
-              {/* Close Button inside drawer */}
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="group flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:text-red-600 hover:bg-red-50 transition-all duration-200 cursor-pointer"
-                aria-label="Close menu"
-              >
-                <X
-                  size={24}
-                  className="transition-transform duration-200 group-hover:scale-110 text-inherit"
-                />
-              </button>
-            </div>
+          {/* Navigation Links inside Drawer */}
+          <div className="px-5 py-4 space-y-1">
+            {NAV.map((item) => {
+              const hasChildren = Boolean(
+                item.groups && item.groups.length > 0,
+              );
+              const isExpanded = mobileExpandedGroup === item.key;
+              const itemActive = isActive(item);
 
-            {/* Navigation Links inside Drawer */}
-            <div className="px-6 py-6 space-y-4">
-              {NAV.map((item) => {
-                const hasChildren = Boolean(
-                  item.groups && item.groups.length > 0,
-                );
-                const isExpanded = mobileExpandedGroup === item.key;
+              return (
+                <div key={item.key} className="border-b border-gray-100 pb-2">
+                  {hasChildren ? (
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setMobileExpandedGroup(isExpanded ? null : item.key)
+                        }
+                        className={`flex w-full items-center justify-between py-2.5 text-base font-semibold transition-colors cursor-pointer ${
+                          itemActive ? "text-primary" : "text-gray-800 hover:text-primary"
+                        }`}
+                      >
+                        <span>{t(`menu.${item.key}`)}</span>
+                        <ChevronDown
+                          size={18}
+                          className={`text-secondary transition-transform duration-300 ${
+                            isExpanded ? "rotate-180 text-primary" : ""
+                          }`}
+                        />
+                      </button>
 
-                return (
-                  <div key={item.key} className="border-b border-gray-100 pb-3">
-                    {hasChildren ? (
-                      <div>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setMobileExpandedGroup(isExpanded ? null : item.key)
-                          }
-                          className="flex w-full items-center justify-between py-2 text-lg font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer"
-                        >
-                          <span>{t(`menu.${item.key}`)}</span>
-                          <ChevronDown
-                            size={18}
-                            className={`text-secondary transition-transform duration-300 ${
-                              isExpanded ? "rotate-180 text-primary" : ""
-                            }`}
-                          />
-                        </button>
-
-                        <div
-                          ref={(el) => {
-                            mobileSubmenuRefs.current[item.key] = el;
-                          }}
-                          className="overflow-hidden"
-                          style={{
-                            height: isExpanded ? "auto" : 0,
-                            opacity: isExpanded ? 1 : 0,
-                          }}
-                        >
-                          <div className="ps-3 pt-3 pb-2 space-y-4">
-                            {item.groups!.map((group) => (
-                              <div key={group.groupKey}>
-                                <p className="text-xs font-bold uppercase tracking-wider text-secondary mb-2">
-                                  {t(`groups.${group.groupKey}`)}
-                                </p>
-                                <ul className="space-y-1">
-                                  {group.items.map(({ key, href }) => (
-                                    <li key={key}>
-                                      <Link
-                                        key={key}
-                                        href={href}
-                                        onClick={() => {
-                                          setMobileMenuOpen(false);
-                                          setMobileExpandedGroup(null);
-                                        }}
-                                        className="flex items-center justify-between py-2 text-base text-gray-600 hover:text-primary hover:translate-x-1 rtl:hover:-translate-x-1 transition-all"
-                                      >
-                                        <span>{t(`links.${key}`)}</span>
-                                        <ArrowRight
-                                          size={14}
-                                          className="text-secondary rtl:rotate-180"
-                                        />
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
+                      <div
+                        ref={(el) => {
+                          mobileSubmenuRefs.current[item.key] = el;
+                        }}
+                        className="overflow-hidden"
+                        style={{
+                          height: isExpanded ? "auto" : 0,
+                          opacity: isExpanded ? 1 : 0,
+                        }}
+                      >
+                        <div className="ps-3 pt-2 pb-2 space-y-3">
+                          {item.groups!.map((group) => (
+                            <div key={group.groupKey}>
+                              <p className="text-[11px] font-bold uppercase tracking-wider text-secondary mb-1.5">
+                                {t(`groups.${group.groupKey}`)}
+                              </p>
+                              <ul className="space-y-1">
+                                {group.items.map(({ key, href }) => (
+                                  <li key={key}>
+                                    <Link
+                                      key={key}
+                                      href={href}
+                                      onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        setMobileExpandedGroup(null);
+                                      }}
+                                      className="flex items-center justify-between py-1.5 text-sm text-gray-600 hover:text-primary hover:translate-x-1 rtl:hover:-translate-x-1 transition-all"
+                                    >
+                                      <span>{t(`links.${key}`)}</span>
+                                      <ArrowRight
+                                        size={13}
+                                        className="text-secondary rtl:rotate-180"
+                                      />
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                    ) : (
-                      <Link
-                        href={item.href || "#"}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block py-2 text-lg font-medium text-gray-800 hover:text-primary transition-colors"
-                      >
-                        {t(`menu.${item.key}`)}
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                    </div>
+                  ) : (
+                    <Link
+                      href={item.href || "#"}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`block py-2.5 text-base font-semibold transition-colors ${
+                        itemActive ? "text-primary" : "text-gray-800 hover:text-primary"
+                      }`}
+                    >
+                      {t(`menu.${item.key}`)}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
+
+        {/* Drawer Footer with Language Switcher */}
+        <div className="p-5 border-t border-gray-100 bg-gray-50 flex items-center justify-between">
+          <span className="text-xs text-gray-500 font-medium">
+            TMYAZNA
+          </span>
+          <Link
+            href={pathname}
+            locale={otherLocale}
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary bg-white border border-gray-200 rounded shadow-sm hover:text-secondary transition-colors"
+          >
+            <span>{t("switch")}</span>
+          </Link>
+        </div>
       </div>
-    </header>
+    </div>
+  </>
   );
 }

@@ -26,6 +26,12 @@
   }
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-primary), sans-serif;
   color: var(--foreground);
@@ -80,5 +86,33 @@ body {
   transform: translateY(0%);
 }
 
+.footer-rolling-text-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1.5em;
+  line-height: 1.5em;
+}
 
+.footer-rolling-text-wrap .footer-text-item {
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
 
+.footer-rolling-text-wrap .footer-text-duplicate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  color: var(--color-secondary); /* Premium secondary color for hover */
+}
+
+.group:hover .footer-rolling-text-wrap .footer-text-primary {
+  transform: translateY(100%);
+}
+
+.group:hover .footer-rolling-text-wrap .footer-text-duplicate {
+  transform: translateY(0%);
+}

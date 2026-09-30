@@ -21,5 +21,71 @@
     "titlePart1": "Making a",
     "titlePart2": "Difference",
     "ctaButton": "What do you want to build?"
+  },
+  "WhyChooseUs": {
+    "eyebrow": "Reasons to choose TMYAZNA",
+    "heading": "Chosen for the discipline we bring to every stage of delivery, from the first drawing to long-term operation.",
+    "paragraph": "Our clients work with a single accountable team across systems integration, construction and facility services — supported by experienced supervision, certified processes and a workforce trained to the Kingdom's highest standards. It is what lets us take on complex, fast-moving projects and hand them over on programme.",
+    "items": {
+      "item1": {
+        "title": "Aligned with Vision 2030",
+        "description": "Committed to supporting the Kingdom's ambitious goals for development."
+      },
+      "item2": {
+        "title": "Experienced Management and Supervision",
+        "description": "Strong leadership that guides each project with proven expertise."
+      },
+      "item3": {
+        "title": "Professional and Highly Skilled Workforce",
+        "description": "Our team is trained to meet the highest industry standards."
+      },
+      "item4": {
+        "title": "Updated with Latest Innovations & Technology",
+        "description": "Continuously integrating advanced technologies to enhance performance."
+      },
+      "item5": {
+        "title": "Commitment to EHSQ",
+        "description": "Upholding the highest standards in Environment, Health, Safety, and Quality."
+      }
+    }
+  },
+    "Service":{
+    "serviceHeading":"Services Lines",
+    "serviceSubHeading":"We deliver integrated systems, construction and facility solutions across the Kingdom — improving quality of life and building a cleaner, more sustainable future.",
+    "service1":"Systems Integration",
+    "service2":"Construction",
+    "service3":"Facility Services",
+    "service4":"Manpower",
+    "service5":"Environmental"
+  },
+  "Footer": {
+    "sections": {
+      "businessLines": "BUSINESS LINES",
+      "company": "COMPANY",
+      "getInTouch": "GET IN TOUCH"
+    },
+    "tagline": "A clear vision for a promising future.",
+    "links": {
+      "systemsIntegration": "Systems Integration",
+      "construction": "Construction",
+      "facilityServices": "Facility Services",
+      "manpower": "Manpower",
+      "environmental": "Environmental",
+      "aboutUs": "About Us",
+      "ourServices": "Our Services",
+      "ourLeadership": "Our Leadership",
+      "mediaCenter": "Media Center",
+      "contact": "Contact"
+    },
+    "contactInfo": {
+      "address1": "Al-Narjis District, Anas Ibn Malik St,",
+      "address2": "Riyadh"
+    },
+    "legal": {
+      "copyright": "© 2026 TMYAZNA Company Limited. All rights reserved.",
+      "contact": "Contact",
+      "privacyPolicy": "Privacy Policy",
+      "arabicName": "شركة تميزنا المحدودة"
+    }
   }
 }

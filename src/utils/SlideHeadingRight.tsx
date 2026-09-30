@@ -10,7 +10,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface SlideBoxProps {
+interface SlideHeadingProps {
   children: React.ReactNode;
   className?: string;
   as?: React.ElementType;
@@ -22,23 +22,19 @@ interface SlideBoxProps {
   autoRtl?: boolean;
 }
 
-/**
- * SlideBox animates any container with scrub tied directly to scroll progress:
- * scrolls down -> slides in to opacity 1,
- * scrolls back up -> slides back out with opacity 0.
- * Responsive-safe: uses percentage/smaller offsets on mobile to prevent overflow.
- */
-export default function SlideBox({
+
+
+export default function SlideHeadingRight({
   children,
   className = "",
-  as: Component = "div",
+  as: Component = "h2",
   direction = "right",
   distance = 60,
   scrub = 1,
   start = "top 92%",
   end = "top 55%",
   autoRtl = true,
-}: SlideBoxProps) {
+}: SlideHeadingProps) {
   const containerRef = useRef<HTMLElement | null>(null);
   const locale = useLocale();
   const isRtl = autoRtl && locale === "ar";
@@ -52,10 +48,10 @@ export default function SlideBox({
       const actualDistance = isMobile ? Math.min(distance, 35) : distance;
 
       let startX: number;
-      if (direction === "right") {
-        startX = isRtl ? -actualDistance : actualDistance;
-      } else {
+      if (direction === "left") {
         startX = isRtl ? actualDistance : -actualDistance;
+      } else {
+        startX = isRtl ? -actualDistance : actualDistance;
       }
 
       const tween = gsap.fromTo(
@@ -89,7 +85,7 @@ export default function SlideBox({
   return (
     <Component
       ref={containerRef}
-      className={`will-change-transform w-full max-w-full ${className}`}
+      className={`will-change-transform max-w-full ${className}`}
     >
       {children}
     </Component>
