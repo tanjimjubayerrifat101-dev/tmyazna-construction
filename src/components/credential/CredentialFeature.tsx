@@ -73,7 +73,7 @@ function CredentialFeature({
   return (
     <FadeUp as="section" className="py-5 sm:py-7" duration={0.75} y={32}>
       <div className="container">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(280px,0.7fr)]">
+        <div className={`grid gap-5 ${ imageSide === "left" ? "lg:grid-cols-[minmax(280px,0.7fr)_minmax(0,1.3fr)]" : "lg:grid-cols-[minmax(0,1.3fr)_minmax(280px,0.7fr)]" }`}>
           <div
             className={`flex flex-col justify-center rounded-lg border border-slate-200 bg-white p-6 shadow-[0_12px_40px_rgba(21,65,103,0.07)] sm:p-8 lg:min-h-[350px] lg:p-10 ${contentOrder}`}
           >
@@ -102,7 +102,7 @@ function CredentialFeature({
               if (lensRef.current) lensRef.current.style.opacity = "0";
             }}
             aria-label={viewImageLabel}
-            className={`group relative block aspect-[4/3] w-full cursor-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4 lg:min-h-[350px] lg:aspect-auto ${imageOrder}`}
+            className={`group relative block aspect-4/3 w-full cursor-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4 lg:min-h-[350px] lg:aspect-auto ${imageOrder}`}
           >
             <Image
               src={image}
@@ -129,13 +129,13 @@ function CredentialFeature({
             aria-modal="true"
             aria-label={title}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[120] flex items-center justify-center bg-[#061421]/75 p-4 backdrop-blur-xl sm:p-8"
+            className="fixed inset-0 z-120 flex items-center justify-center bg-[#061421]/75 p-4 backdrop-blur-xl sm:p-8"
           >
             <button
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label={closeImageLabel}
-              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-black/30 text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="absolute right-4 cursor-pointer top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-black/30 text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <X size={22} />
             </button>
