@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -184,17 +185,7 @@ body {
 
 /* ─── Blog Card — floating glassmorphic bar ──────────────────────────────── */
 
-/**
- * The bar height is expressed as a percentage of its *parent* (.blog-card-bar
- * is inside a 4:3 aspect-ratio container). We cannot use % height directly on
- * an absolutely positioned child of an aspect-ratio container in a reliable
- * cross-browser way, so we set min-height in px and let the flex column grow.
- *
- * The visual "22% / 26% / 30%" feel is achieved via min-height targets:
- *   4:3 container at ~320px wide ≈ 240px tall → 22% ≈ 53px, 26% ≈ 62px, 30% ≈ 72px
- */
 
-/* Default (pointer + touch) */
 .blog-card-bar {
   min-height: 54px;
 }
@@ -232,6 +223,83 @@ body {
 }
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out both;
+}
+
+.scroll-top-button {
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(-24px) scale(0.96);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 360ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 360ms linear;
+}
+
+.scroll-top-button.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 360ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s;
+}
+
+.scroll-top-water {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.scroll-top-water::before,
+.scroll-top-water::after {
+  position: absolute;
+  bottom: -210%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  border-radius: 42%;
+  background: var(--light-blue);
+  content: "";
+  transition: bottom 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.scroll-top-water::after {
+  bottom: -220%;
+  background: #49bde8;
+  opacity: 0.7;
+}
+
+.scroll-top-button:hover .scroll-top-water::before,
+.scroll-top-button:focus-visible .scroll-top-water::before {
+  bottom: -48%;
+  animation: scrollTopWave 4s linear infinite;
+}
+
+.scroll-top-button:hover .scroll-top-water::after,
+.scroll-top-button:focus-visible .scroll-top-water::after {
+  bottom: -58%;
+  animation: scrollTopWave 5s linear infinite reverse;
+}
+
+@keyframes scrollTopWave {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top-button,
+  .scroll-top-water::before,
+  .scroll-top-water::after {
+    transition: none;
+    animation: none !important;
+  }
 }
 
 .dark {

@@ -21,7 +21,7 @@ export default async function MediaPage() {
         searchPlaceholder={t("searchPlaceholder")}
         prevLabel={t("prevPage")}
         nextLabel={t("nextPage")}
-        pageLabel={t("pageOf")}
+        pageLabel={t.raw("pageOf") as string}
         noResultsLabel={t("noResults")}
         noResultsSubLabel={t("noResultsSub")}
       />

@@ -158,6 +158,33 @@
     "noResults": "No articles found",
     "noResultsSub": "Try a different keyword or browse all articles."
   },
+  "Credential": {
+    "breadcrumb": "Credentials",
+    "eyebrow": "QUALITY & COMPLIANCE",
+    "heading": "Certified to deliver with confidence",
+    "subheading": "Our certifications reflect the standards, accountability and care we bring to every project and partnership.",
+    "heroImageAlt": "Riyadh city skyline",
+    "sectionEyebrow": "OUR STANDARDS",
+    "sectionHeading": "Built on trusted systems and continuous improvement",
+    "viewLens": "View",
+    "viewImage": "Open image",
+    "closeImage": "Close image preview",
+    "openLink": "Open credential document",
+    "environment": {
+      "eyebrow": "SUSTAINABILITY & COMPLIANCE",
+      "title": "ISO 14001:2015 — Environmental Management System (EMS)",
+      "subtitle": "TMYAZNA's commitment to sustainability",
+      "description": "This certification reflects TMYAZNA's proactive dedication to minimizing environmental impact, preventing pollution, and promoting sustainable industrial practices. By integrating these global environmental benchmarks into our core operations, we ensure that our infrastructure development and engineering projects are executed with a minimal carbon footprint. This framework directly reinforces our environmental portfolios — including Reverse Osmosis plant integration, greywater recycling, and smart sensor-based waste tracking — ensuring our operations seamlessly align with the eco-friendly mandates of the Saudi Green Initiative and Saudi Vision 2030.",
+      "imageAlt": "Electrical systems being inspected by a technician"
+    },
+    "quality": {
+      "eyebrow": "QUALITY MANAGEMENT",
+      "title": "ISO 9001:2015 — Quality Management System",
+      "subtitle": "Consistent quality at every stage",
+      "description": "Our quality management approach brings clear processes, experienced supervision and continual review to every project. From planning and procurement through installation, testing and handover, our teams work to defined requirements and documented controls. This disciplined framework helps us deliver reliable outcomes, strengthen collaboration with clients and partners, and keep improving the services we provide across the Kingdom.",
+      "imageAlt": "Technicians working on a building services installation"
+    }
+  },
   "Contact": {
     "breadcrumb": "Contact",
     "eyebrow": "CONTACT",
