@@ -60,7 +60,11 @@ export default function FadeUp({
                 }
             );
         },
-        { scope: containerRef, dependencies: [children] }
+        {
+            scope: containerRef,
+            dependencies: [duration, delay, y, stagger, threshold],
+            revertOnUpdate: true,
+        }
     );
 
     return (

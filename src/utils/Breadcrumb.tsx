@@ -17,6 +17,7 @@ export type BreadcrumbsProps = {
   imageAlt?: string;
 
   homeLabel?: string;
+  centered?: boolean;
 };
 
 
@@ -28,6 +29,7 @@ export default function Breadcrumbs({
   image = defaultBg,
   imageAlt = "Page Banner",
   homeLabel = "Home",
+  centered = false,
 }: BreadcrumbsProps) {
   return (
     <section className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28 text-white isolate">
@@ -61,7 +63,11 @@ export default function Breadcrumbs({
       />
 
       <div className="container relative z-10">
-        <div className="max-w-3xl flex flex-col items-start gap-4">
+        <div
+          className={`max-w-3xl flex flex-col gap-4 ${
+            centered ? "mx-auto items-center text-center" : "items-start"
+          }`}
+        >
           {/* Eyebrow badge or accent line */}
           {eyebrow && (
             <FadeUp duration={0.6} y={15} threshold="top 95%">
@@ -97,7 +103,9 @@ export default function Breadcrumbs({
           <FadeUp delay={0.3} duration={0.8} y={25} threshold="top 95%">
             <nav
               aria-label="Breadcrumb"
-              className="mt-6 inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-medium shadow-lg"
+              className={`mt-6 inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-medium shadow-lg ${
+                centered ? "mx-auto" : ""
+              }`}
             >
               <Link
                 href="/"
