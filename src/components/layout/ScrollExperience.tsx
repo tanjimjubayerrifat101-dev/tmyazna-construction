@@ -63,7 +63,7 @@ export default function ScrollExperience({ locale }: { locale: string }) {
       title={locale === "ar" ? "العودة إلى الأعلى" : "Back to top"}
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
-      className={`scroll-top-button fixed bottom-20 right-20 z-60 flex size-12 cursor-pointer items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${isVisible ? "is-visible" : ""}`}
+      className={`scroll-top-button fixed bottom-8 md:bottom-14  lg:bottom-14 xl:bottom-20 right-8 md:right-14  lg:right-14 xl:right-20 z-60 flex size-12 cursor-pointer items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${isVisible ? "is-visible" : ""}`}
     >
       <span className="scroll-top-water" aria-hidden="true" />
       <ArrowUp className="relative z-20" aria-hidden="true" size={21} strokeWidth={2.25} />

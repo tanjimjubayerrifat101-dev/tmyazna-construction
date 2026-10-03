@@ -2,6 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { House, ChevronRight } from "lucide-react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import SplitReveal from "@/utils/SplitReveal";
 import FadeUp from "@/utils/FadeUp";
@@ -28,9 +29,12 @@ export default function Breadcrumbs({
   description,
   image = defaultBg,
   imageAlt = "Page Banner",
-  homeLabel = "Home",
+  homeLabel,
   centered = false,
 }: BreadcrumbsProps) {
+  const locale = useLocale();
+  const localizedHomeLabel = homeLabel ?? (locale === "ar" ? "الرئيسية" : "Home");
+
   return (
     <section className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28 text-white isolate">
       {/* Background Image */}
@@ -82,7 +86,7 @@ export default function Breadcrumbs({
           <div className="w-full">
             <SplitReveal
               as="h1"
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[110%] rtl:leading-[125%]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[110%] rtl:leading-[125%]"
               stagger={0.06}
               duration={0.9}
             >
@@ -112,7 +116,7 @@ export default function Breadcrumbs({
                 className="flex items-center gap-1.5 text-white/80 hover:text-white transition-colors"
               >
                 <House size={14} className="text-secondary" />
-                <span>{homeLabel}</span>
+                <span>{localizedHomeLabel}</span>
               </Link>
 
               <ChevronRight

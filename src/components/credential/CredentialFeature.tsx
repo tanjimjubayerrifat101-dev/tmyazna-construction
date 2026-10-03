@@ -65,10 +65,6 @@ function CredentialFeature({
 
   const contentOrder = imageSide === "left" ? "lg:order-2" : "lg:order-1";
   const imageOrder = imageSide === "left" ? "lg:order-1" : "lg:order-2";
-  const imageFit =
-    typeof image !== "string" && image.width > image.height
-      ? "object-cover"
-      : "object-contain";
 
   return (
     <FadeUp as="section" className="py-5 sm:py-7" duration={0.75} y={32}>
@@ -77,12 +73,12 @@ function CredentialFeature({
           <div
             className={`flex flex-col justify-center rounded-lg border border-slate-200 bg-white p-6 shadow-[0_12px_40px_rgba(21,65,103,0.07)] sm:p-8 lg:min-h-[350px] lg:p-10 ${contentOrder}`}
           >
-            {eyebrow && (
+            {/* {eyebrow && (
               <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase text-secondary">
                 <span className="h-px w-8 bg-secondary" aria-hidden="true" />
                 <span>{eyebrow}</span>
               </div>
-            )}
+            )} */}
             <h2 className="text-2xl font-bold leading-tight text-primary sm:text-3xl">
               {title}
             </h2>
@@ -102,19 +98,19 @@ function CredentialFeature({
               if (lensRef.current) lensRef.current.style.opacity = "0";
             }}
             aria-label={viewImageLabel}
-            className={`group relative block aspect-4/3 w-full cursor-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4 lg:min-h-[350px] lg:aspect-auto ${imageOrder}`}
+            className={`group relative block aspect-4/3 w-full cursor-none overflow-hidden bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4 lg:min-h-[350px] lg:aspect-auto ${imageOrder}`}
           >
             <Image
               src={image}
               alt={imageAlt}
               fill
               sizes="(max-width: 1024px) 100vw, 38vw"
-              className={imageFit}
+              className="w-full object-contain"
             />
             <span
               ref={lensRef}
               aria-hidden="true"
-              className="pointer-events-none absolute z-10 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white/25 text-sm font-semibold text-white opacity-0 backdrop-blur-md transition-opacity duration-150"
+              className="pointer-events-none absolute z-10 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-primary/90 text-sm font-semibold text-white opacity-0 backdrop-blur-md transition-opacity duration-150"
             >
               {lensLabel}
             </span>
@@ -152,7 +148,7 @@ function CredentialFeature({
               </a>
             )}
             <div
-              className="relative h-[min(78dvh,720px)] w-[88vw] sm:w-[min(54vw,520px)]"
+              className="relative h-[min(88dvh,900px)] w-[min(92vw,1200px)]"
               onClick={(event) => event.stopPropagation()}
             >
               <Image
@@ -160,7 +156,7 @@ function CredentialFeature({
                 alt={imageAlt}
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>

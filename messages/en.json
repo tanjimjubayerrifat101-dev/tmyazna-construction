@@ -160,12 +160,13 @@
   },
   "Credential": {
     "breadcrumb": "Credentials",
-    "eyebrow": "QUALITY & COMPLIANCE",
-    "heading": "Certified to deliver with confidence",
-    "subheading": "Our certifications reflect the standards, accountability and care we bring to every project and partnership.",
+    "eyebrow": "Credentials",
+    "heading": "Certified to build the Kingdom's future",
+    "subheading": "Independently audited standards and accreditations that govern how we plan, build, operate and maintain — across every project in the Kingdom.",
     "heroImageAlt": "Riyadh city skyline",
     "sectionEyebrow": "OUR STANDARDS",
-    "sectionHeading": "Built on trusted systems and continuous improvement",
+    "sectionHeading": "Certifications & Accreditations",
+    "sectionHeading1": "Compliance & Licensing",
     "viewLens": "View",
     "viewImage": "Open image",
     "closeImage": "Close image preview",
@@ -179,11 +180,47 @@
     },
     "quality": {
       "eyebrow": "QUALITY MANAGEMENT",
-      "title": "ISO 9001:2015 — Quality Management System",
-      "subtitle": "Consistent quality at every stage",
-      "description": "Our quality management approach brings clear processes, experienced supervision and continual review to every project. From planning and procurement through installation, testing and handover, our teams work to defined requirements and documented controls. This disciplined framework helps us deliver reliable outcomes, strengthen collaboration with clients and partners, and keep improving the services we provide across the Kingdom.",
-      "imageAlt": "Technicians working on a building services installation"
+      "title": "ISO 9001:2015 — Quality Management System (QMS)",
+      "subtitle": "TMYAZNA's Commitment to Excellence",
+      "description": "This certification validates that TMYAZNA operates a rigorous corporate framework dedicated to continuous improvement, operational efficiency, and uncompromising service quality. By embedding these global standard processes into our daily operations, we guarantee that all complex HVAC, Fire Life Safety, Electrical, and Mechanical installations are executed with absolute technical precision. This framework serves as a vital foundation for satisfying the strict vendor pre-qualification criteria required by Saudi Arabia's landmark giga-projects, while ensuring our procurement, engineering, and project management teams consistently exceed client expectations and fully comply with the Saudi Building Code (SBC).",
+      "imageAlt": "TMYAZNA's Commitment to Excellence"
+    },
+    "facility":{
+      "eyebrow": "FACILITY MANAGEMENT",
+      "title": "TMYAZNA's Commitment to Lifecycle Optimization",
+      "subtitle": "TMYAZNA's Commitment to Lifecycle Optimization",
+      "description": "This certification recognizes TMYAZNA's capability to deliver integrated facility management solutions that meet the highest international benchmarks for safety, efficiency, and comfort. By embedding these specialized standards into our operations, we go beyond basic maintenance to provide proactive, technology-driven Hard and Soft FM services. This framework empowers our on-site technical teams to utilize CAFM and digital tools to reduce downtime, minimize operational costs, and guarantee maximum uptime for critical assets, ensuring a pristine and high-performance environment across the Kingdom's high-traffic commercial and industrial giga-projects.",
+      "imageAlt": "TMYAZNA's Commitment to Lifecycle Optimization"
+    },
+    "occupational":{
+      "eyebrow": "FACILITY MANAGEMENT",
+      "title": "ISO 45001:2018 — Occupational Health & Safety Management System (OH&SMS)",
+      "subtitle": "TMYAZNA's Commitment to Workforce Protection",
+      "description": "This certification validates TMYAZNA's proactive implementation of an advanced framework designed to eliminate workplace hazards, reduce risks, and protect the health and welfare of our people. By enforcing these strict occupational safety protocols across all operations, we guarantee a secure, incident-free environment for our certified teams. This rigorous safety system is vital for executing high-risk activities — such as high-voltage distribution, heavy mechanical installations, and complex civil construction — ensuring full compliance with local civil defense codes and satisfying the stringent safety criteria of international developers like NEOM and Red Sea Global.",
+      "imageAlt": "TMYAZNA's Commitment to Workforce Protection"
+    },
+    "membership":{
+      "eyebrow": "FACILITY MANAGEMENT",
+      "title": "BICSc Corporate Membership — The British Institute of Cleaning Science",
+      "subtitle": "TMYAZNA's Commitment to Elite Hygiene Standards",
+      "description": "This globally recognized membership confirms that TMYAZNA adheres to premium, scientifically backed hygienic standards and sustainable cleaning protocols. By integrating these specialized British standards into our operations, this membership validates our capability to handle sensitive technical environments, medical waste protocols, and luxury finishes using eco-friendly technologies — ensuring a completely sanitized, professional environment that enhances occupant well-being and protects your structural investment.",
+      "imageAlt": "TMYAZNA's Commitment to Elite Hygiene Standards"
+    },
+    "ministry":{
+      "eyebrow": "FACILITY MANAGEMENT",
+      "title": "Ministry of Municipalities and Housing — Contractor Classification Certificate",
+      "subtitle": "TMYAZNA's Commitment to Regulatory Excellence",
+      "description": "This official classification certificate from the Ministry of Municipalities and Housing validates TMYAZNA's technical, financial, and administrative capabilities as a trusted contractor within the Kingdom. It serves as formal recognition of our capacity to execute large-scale multi-disciplinary projects, including general contracting, construction, and specialized engineering services. This qualification officially empowers TMYAZNA to legally participate in major government tenders and secure commercial contracts for infrastructure and industrial developments across Saudi Arabia.",
+      "imageAlt": "TMYAZNA's Commitment to Regulatory Excellence"
+    },
+      "authority":{
+      "eyebrow": "FACILITY MANAGEMENT",
+      "title": "Saudi Contractors Authority (SCA) Membership",
+      "subtitle": "TMYAZNA's Commitment to Industry Best Practices",
+      "description": "Our active registration with the Saudi Contractors Authority (SCA) solidifies TMYAZNA's position as a fully vetted, transparent, and legally compliant organization within the Saudi construction sector. By adhering to the SCA's strict professional regulations, we align our workforce training, safety standards, and project execution methodologies with international benchmarks. This membership reinforces our status as a qualified, strategic partner ready to collaborate on landmark giga-projects driving Saudi Vision 2030.",
+      "imageAlt": "TMYAZNA's Commitment to Industry Best Practices"
     }
+    
   },
   "Contact": {
     "breadcrumb": "Contact",
