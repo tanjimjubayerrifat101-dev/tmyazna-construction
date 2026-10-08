@@ -56,7 +56,7 @@ export default function ServiceCard() {
       {SERVICES.map(({ key, icon: Icon, barHoverClass, iconBgClass }) => (
         <div
           key={key}
-          className="group w-full lg:hover:shadow-[8px_8px_30px_rgba(0,0,0,0.06)] duration-400 transition-all cursor-pointer h-64 border md:border-s-0 md:border-t-0 border-gray-100 flex justify-between items-start flex-col p-8"
+          className="group w-full lg:hover:shadow-[inset_0_0_30px_rgba(0,0,0,0.06)] duration-400 transition-all cursor-pointer h-64 border md:border-s-0 md:border-t-0 border-gray-100 flex justify-between items-start flex-col p-8"
         >
           <div className="w-full">
             <div
@@ -70,7 +70,7 @@ export default function ServiceCard() {
 
           <div className="flex relative justify-end items-center w-full">
             <div
-              className={`w-15 h-15 lg:group-hover:opacity-100 duration-400 lg:opacity-0 absolute -top-6 rotate-45 flex items-center ${iconBgClass} justify-center transition-all end-0`}
+              className={`w-15 h-15  absolute -top-6 rotate-45 flex items-center ${iconBgClass} justify-center transition-all end-0`}
             >
               <Icon
                 className="text-white -rotate-45"

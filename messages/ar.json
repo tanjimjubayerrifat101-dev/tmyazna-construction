@@ -20,6 +20,12 @@
   "Hero": {
     "titlePart1": "نصنع",
     "titlePart2": "الفارق",
+    "slide2TitlePart1": "شريككم الموثوق في",
+    "slide2TitlePart2": "التنمية الوطنية",
+    "slide2Subtitle": "من نيوم إلى البحر الأحمر وما بعده",
+    "slide3TitlePart1": "نبني",
+    "slide3TitlePart2": "مستقبلاً أقوى",
+    "slide3Subtitle": "خدمات الإنشاءات والمرافق في جميع أنحاء المملكة العربية السعودية.",
     "ctaButton": "ماذا تريد أن تبني؟"
   },
   "WhyChooseUs": {
@@ -270,4 +276,3 @@
     "openInGoogleMaps": "فتح في خرائط جوجل"
   }
 }
-

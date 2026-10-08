@@ -364,7 +364,7 @@ export default function Navbar() {
                         setActiveMenu(item.key);
                       }
                     }}
-                    className="group flex items-center gap-1.5 px-3.5 xl:px-5 h-full text-[15px] font-medium text-gray-800 transition-colors duration-200 cursor-pointer"
+                    className="group flex items-center gap-1.5 px-3.5 xl:px-5 h-full text-[15px] font-medium text-[#0287FC] transition-colors duration-200 cursor-pointer"
                   >
                     <span className="nav-rolling-text-wrap">
                       <span className="nav-text-item nav-text-primary">
@@ -377,7 +377,9 @@ export default function Navbar() {
 
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-300 ease-out text-secondary ${
+                      className={`transition-transform duration-300 ease-out ${
+                        scrolled ? "text-secondary" : "text-[#0287FC]"
+                      } ${
                         isOpen ? "rotate-180 text-primary" : ""
                       }`}
                     />
@@ -385,7 +387,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.href || "#"}
-                    className="group relative flex items-center px-3.5 xl:px-5 h-full text-[15px] font-medium text-gray-800 transition-colors duration-200"
+                    className="group relative flex items-center px-3.5 xl:px-5 h-full text-[15px] font-medium text-[#0287FC] transition-colors duration-200"
                   >
                     <span className="nav-rolling-text-wrap">
                       <span
@@ -452,16 +454,27 @@ export default function Navbar() {
         </nav>
 
         {/* Right Section Actions: Search, Language Switch & Animated Hamburger Menu */}
-        <div className="flex items-center gap-3 sm:gap-4 xl:gap-6">
+        <div className="flex shrink-0 items-center ">
           {/* Search Trigger */}
-          <div className="relative hidden md:block">
+          <div className="relative hidden shrink-0 md:block">
             <button
               type="button"
               onClick={toggleSearch}
               aria-label={t("search")}
-              className="flex h-10 w-10 items-center cursor-pointer justify-center rounded-none text-gray-700 hover:text-primary transition-colors duration-200"
+              aria-expanded={searchOpen}
+              className={`group relative cursor-pointer flex h-10 w-10 items-center justify-center overflow-hidden  transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${
+                scrolled ? "text-gray-700" : "text-[#0287FC]"
+              }`}
             >
-              <Search size={20} />
+              <span
+                className={`absolute inset-0 ${
+                  locale === "ar" ? "-translate-x-[100%]" : "translate-x-full"
+                } bg-primary transition-transform duration-300 ease-out group-hover:translate-x-0 group-focus-visible:translate-x-0`}
+              />
+              <Search
+                size={20}
+                className="relative z-10 transition-colors duration-200 group-hover:text-white group-focus-visible:text-white"
+              />
             </button>
 
             {/* Quick search input flyout with GSAP animation */}
@@ -537,15 +550,22 @@ export default function Navbar() {
             )}
           </div>
 
-          <span className="h-5 w-[1px] bg-gray-200" />
+          <span aria-hidden="true" className="h-5 w-px bg-gray-200" />
 
           {/* Language Switcher */}
           <Link
             href={pathname}
             locale={otherLocale}
-            className="flex items-center gap-1 text-sm font-semibold text-primary hover:text-secondary px-2 py-1 transition-colors duration-200"
+            className="group relative inline-flex h-10 shrink-0 items-center justify-center overflow-hidden px-3 text-sm font-semibold text-primary transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
-            <span>{t("switch")}</span>
+            <span
+              className={`absolute inset-0 ${
+                locale === "ar"
+                  ? "-translate-x-[100%]"
+                  : "translate-x-[101%]"
+              } bg-primary transition-transform duration-300 ease-out group-hover:translate-x-0 group-focus-visible:translate-x-0`}
+            />
+            <span className="relative z-10">{t("switch")}</span>
           </Link>
 
           {/* Tablet / Mobile Menu Toggle Button: 3 straight lines morphing to X on click with NO unwanted skew/rotate on hover */}
@@ -557,15 +577,21 @@ export default function Navbar() {
           >
             <span
               ref={burgerTopRef}
-              className="w-6 h-[2px] bg-gray-800 rounded-full origin-center will-change-transform block"
+              className={`w-6 h-[2px] rounded-full origin-center will-change-transform block ${
+                scrolled ? "bg-gray-800" : "bg-[#0287FC]"
+              }`}
             />
             <span
               ref={burgerMidRef}
-              className="w-6 h-[2px] bg-gray-800 rounded-full origin-center will-change-transform block"
+              className={`w-6 h-[2px] rounded-full origin-center will-change-transform block ${
+                scrolled ? "bg-gray-800" : "bg-[#0287FC]"
+              }`}
             />
             <span
               ref={burgerBotRef}
-              className="w-6 h-[2px] bg-gray-800 rounded-full origin-center will-change-transform block"
+              className={`w-6 h-[2px] rounded-full origin-center will-change-transform block ${
+                scrolled ? "bg-gray-800" : "bg-[#0287FC]"
+              }`}
             />
           </button>
         </div>

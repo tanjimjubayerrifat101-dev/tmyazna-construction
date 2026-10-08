@@ -2,122 +2,46 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { useTranslations } from "next-intl";
-import WhyChooseUsItem from "./WhyChooseUsItem";
+import { useLocale, useTranslations } from "next-intl";
+import {
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { Autoplay, Pagination } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+
 import SlideHeadingLeft from "@/utils/SlideHeading";
 import SlideHeadingRight from "@/utils/SlideHeadingRight";
+import img1 from "@/assets/home/why-choose/why2.png";
+import img2 from "@/assets/home/why-choose/why3.png";
 
-import img from "@/assets/home/why-choose.png"
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
+const images = [img1, img2, img1, img2, img1];
 
 export default function WhyChooseUs() {
-  const container = useRef<HTMLDivElement>(null);
   const t = useTranslations("WhyChooseUs");
+  const locale = useLocale();
+  const swiperRef = useRef<SwiperInstance | null>(null);
+  const isRtl = locale === "ar";
 
-  const listData = [
-    {
-      title: t("items.item1.title"),
-      description: t("items.item1.description"),
-    },
-    {
-      title: t("items.item2.title"),
-      description: t("items.item2.description"),
-    },
-    {
-      title: t("items.item3.title"),
-      description: t("items.item3.description"),
-    },
-    {
-      title: t("items.item4.title"),
-      description: t("items.item4.description"),
-    },
-    {
-      title: t("items.item5.title"),
-      description: t("items.item5.description"),
-    }
-  ];
-  
-  useGSAP(() => {
-    // Keep the image visible immediately; only add subtle scroll parallax.
-    gsap.to(".why-inner-image", {
-      yPercent: 9,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".why-image-wrapper",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      }
-    });
+  const listData = Array.from({ length: 5 }, (_, index) => {
+    const itemKey = `items.item${index + 1}`;
 
-    // 4. List rows
-    const rows = gsap.utils.toArray<HTMLElement>(".why-list-row");
-    rows.forEach((row) => {
-      const tlRow = gsap.timeline({
-        scrollTrigger: {
-          trigger: row,
-          start: "top 90%",
-        }
-      });
-
-      tlRow
-        .fromTo(row,
-          { borderTopColor: "rgba(0,0,0,0)" },
-          { borderTopColor: "var(--color-primary)", duration: 0.5, clearProps: "borderTopColor" }
-        )
-        .fromTo(row.querySelector(".row-title"),
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-          "<0.1"
-        )
-        .fromTo(row.querySelector(".row-desc"),
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-          "<0.1"
-        )
-        .fromTo(row.querySelector(".row-arrow"),
-          { scale: 0 },
-          { scale: 1, duration: 0.5, ease: "back.out(1.7)" },
-          "<0.1"
-        );
-    });
-
-    // 5. Background glow drift
-    gsap.to(".why-bg-glow", {
-      yPercent: 30,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      }
-    });
-
-    ScrollTrigger.refresh();
-
-  }, { scope: container });
+    return {
+      title: t(`${itemKey}.title`),
+      description: t(`${itemKey}.description`),
+      img: images[index],
+    };
+  });
 
   return (
-    <section 
-      ref={container} 
-      className="py-20 md:py-24 lg:py-28 w-full relative overflow-clip bg-background"
-    >
-      {/* Background Glow */}
-      <div className="why-bg-glow absolute top-0 -left-1/4 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container relative z-10">
-        
-        {/* Header Section (Matched with Service Component) */}
-        <div className="flex justify-center items-center flex-col w-full mb-16 lg:mb-24">
-          <div className="text-center w-full xl:w-[80%] 2xl:w-[60%]">
-            <SlideHeadingLeft className="text-4xl lg:text-5xl text-primary font-regular uppercase mb-3">
+    <section className="why-choose-section relative w-full overflow-hidden bg-background py-20 md:py-24 lg:py-28">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="mb-16 flex w-full flex-col items-center justify-center lg:mb-24">
+          <div className="w-full text-center xl:w-[80%] 2xl:w-[60%]">
+            <SlideHeadingLeft className="mb-3 text-4xl font-regular uppercase text-primary lg:text-5xl">
               {t("eyebrow")}
             </SlideHeadingLeft>
             <SlideHeadingRight className="text-lg lg:text-xl">
@@ -126,40 +50,86 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Two Column Grid */}
-        <div className="why-grid-container grid grid-cols-1 lg:grid-cols-[0.82fr_1.18fr] gap-12 lg:gap-24 relative">
-          
-          {/* LEFT: Sticky Media & Text */}
-          <div className="relative">
-            <div className="lg:sticky lg:top-[120px] flex flex-col gap-8">
-              <div className="why-image-wrapper relative w-full h-[40vh] min-h-[240px] max-h-[460px] overflow-hidden rounded-md">
-                <Image
-                  src={img}
-                  alt="Partnership"
-                  fill
-                  priority
-                  sizes="(max-width: 1023px) 100vw, 42vw"
-                  placeholder="blur"
-                  className="why-inner-image object-cover grayscale brightness-90 contrast-125"
-                />
-              </div>
-              <p className="text-lg lg:text-xl leading-relaxed text-foreground/80 font-medium text-center lg:text-start">
-                {t("paragraph")}
-              </p>
-            </div>
-          </div>
-
-          {/* RIGHT: List */}
-          <div className="flex flex-col border-t border-primary/20">
+        <div className="relative mx-auto w-full px-7 md:px-12 xl:w-4/5">
+          <Swiper
+            key={locale}
+            aria-label={t("heading")}
+            dir={isRtl ? "rtl" : "ltr"}
+            modules={[Autoplay, Pagination]}
+            centeredSlides
+            spaceBetween={12}
+            slidesPerView={1.08}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop
+            pagination={{ clickable: true, el: ".why-choose-pagination" }}
+            breakpoints={{
+              640: { slidesPerView: 1.5, spaceBetween: 14 },
+              768: { slidesPerView: 2.2, spaceBetween: 16 },
+              1024: { slidesPerView: 3, spaceBetween: 18 },
+            }}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            className="why-choose-swiper"
+          >
             {listData.map((item, index) => (
-              <WhyChooseUsItem 
-                key={index} 
-                title={item.title} 
-                description={item.description} 
-              />
-            ))}
-          </div>
+                <SwiperSlide key={index} className="h-auto">
+                  <article className="why-choose-card group relative flex w-full flex-col overflow-hidden rounded-xl border border-border/50 bg-white dark:bg-card">
+                    <div className="why-choose-card-image relative w-full shrink-0 overflow-hidden">
+                      <Image
+                        src={item.img}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1]"
+                      />
 
+                    </div>
+
+                    <div className="flex min-h-0 grow flex-col bg-card p-5">
+                      <div>
+                        <h3 className="why-choose-card-title mb-2 line-clamp-2 text-lg font-semibold leading-snug text-foreground">
+                          {item.title}
+                        </h3>
+                        <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                          {item.description}
+                        </p>
+                      </div>
+
+                    </div>
+                  </article>
+                </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="why-choose-pagination swiper-pagination" />
+
+          <button
+            type="button"
+            aria-label={isRtl ? "الشريحة السابقة" : "Previous slide"}
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="absolute -left-1 top-[42%] z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white cursor-pointer  transition-colors hover:text-white md:left-0 rtl:left-auto rtl:-right-1 md:rtl:right-0"
+          >
+            <ChevronLeft
+              aria-hidden="true"
+              className={`h-6 w-6 ${isRtl ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          <button
+            type="button"
+            aria-label={isRtl ? "الشريحة التالية" : "Next slide"}
+            onClick={() => swiperRef.current?.slideNext()}
+            className="absolute -right-1 top-[42%] z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white cursor-pointer  transition-colors hover:text-white md:right-0 rtl:right-auto rtl:-left-1 md:rtl:left-0"
+          >
+            <ChevronRight
+              aria-hidden="true"
+              className={`h-6 w-6 ${isRtl ? "rotate-180" : ""}`}
+            />
+          </button>
         </div>
       </div>
     </section>

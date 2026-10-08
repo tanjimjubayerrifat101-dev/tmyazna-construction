@@ -69,10 +69,10 @@ export default function MediaDetailClient({
             <FadeUp duration={0.6} y={20} delay={0.05} threshold="top 95%">
               <div className="flex flex-wrap items-center gap-4 mb-6">
                 {/* Category badge */}
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/25 text-secondary text-xs font-semibold uppercase tracking-wider">
+                {/* <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/25 text-secondary text-xs font-semibold uppercase tracking-wider">
                   <Tag className="w-3 h-3" aria-hidden="true" />
                   {category}
-                </span>
+                </span> */}
 
                 {/* Date */}
                 <span className="inline-flex items-center gap-1.5 text-slate-500 text-sm">

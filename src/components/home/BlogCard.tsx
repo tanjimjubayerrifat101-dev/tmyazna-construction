@@ -10,28 +10,7 @@ interface BlogCardProps {
   post: BlogPost;
 }
 
-/**
- * BlogCard — reusable card component for news/blog posts.
- *
- * Anatomy (top→bottom):
- *  1. Card shell  — white surface, 24px radius, 1px hairline border
- *  2. Media area  — 4:3 aspect ratio, overflow:hidden, image scales on hover
- *  3. Floating bar — glassmorphic, absolutely positioned over the image bottom
- *  4. Body        — title (3-line clamp) + "Read more" row
- *
- * Hover (pointer devices only via @media hover:hover):
- *  - Card lifts 6px, border → brand-blue, soft blue shadow
- *  - Image scales to 1.1 (900ms ease)
- *  - Title color → brand-blue
- *  - Glass bar grows from ~22% to ~30% of image height (550ms ease-out)
- *  - Arrow button → brand-blue filled with glow, arrow nudges 3px
- *
- * Touch (@media hover:none): bar stays at 26%, no lift, no scale.
- *
- * RTL: all logical CSS props used (ps-*, pe-*, ms-*, me-*, start-*, end-*).
- * Dates: formatted with Intl.DateTimeFormat for the active locale.
- * Reduced-motion: scale/lift disabled, simple fade only.
- */
+
 export default function BlogCard({ post }: BlogCardProps) {
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -64,10 +43,10 @@ export default function BlogCard({ post }: BlogCardProps) {
         motion-safe:transition-all motion-safe:duration-300
         hover:border-secondary
         hover:-translate-y-1.5
-        hover:shadow-[0_12px_40px_rgba(0,134,255,0.15)]
+        hover:shadow-[inset_0_12px_40px_rgba(0,134,255,0.15)]
         focus-within:border-secondary
         focus-within:-translate-y-1.5
-        focus-within:shadow-[0_12px_40px_rgba(0,134,255,0.15)]
+        focus-within:shadow-[inset_0_12px_40px_rgba(0,134,255,0.15)]
         overflow-hidden
         h-full
       "
@@ -95,7 +74,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="
             object-cover
-            motion-safe:transition-transform motion-safe:duration-[900ms] motion-safe:ease-out
+            motion-safe:transition-transform motion-safe:duration-900 motion-safe:ease-out
             group-hover:scale-110
           "
           loading="lazy"
@@ -114,7 +93,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             bg-neutral-950/45
             backdrop-blur-xl saturate-150
             shadow-[0_8px_25px_rgba(0,0,0,0.28)]
-            motion-safe:transition-all motion-safe:duration-[550ms] motion-safe:ease-out
+            motion-safe:transition-all motion-safe:duration-550 motion-safe:ease-out
           "
         >
           {/* Date block — start side */}
@@ -139,7 +118,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           </div>
 
           {/* Premium Category badge — end side with indicator dot */}
-          <div
+          {/* <div
             className="
               inline-flex items-center gap-1.5
               px-3 py-1.5 rounded-full
@@ -156,7 +135,7 @@ export default function BlogCard({ post }: BlogCardProps) {
               aria-hidden="true"
             />
             <span>{category}</span>
-          </div>
+          </div> */}
         </div>
       </div>
 

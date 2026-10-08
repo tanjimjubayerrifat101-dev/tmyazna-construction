@@ -6,22 +6,11 @@ import { BLOG_POSTS } from "@/data/blog";
 import RollingButton from "@/utils/RollingButton";
 
 interface BlogGridProps {
-  /** How many posts to show. Default: all. */
   limit?: number;
-  /** When true the full section wrapper with heading is rendered (home page use). */
   showSectionHeader?: boolean;
 }
 
-/**
- * BlogGrid — renders a responsive CSS-grid of BlogCards.
- *
- * Desktop:  3 columns (auto-fit ≥ 290px, 28px gap)
- * Tablet:   2 columns
- * Mobile:   1 column
- *
- * When showSectionHeader=true it adds the section heading + description that
- * mirrors the heading style used in Service, WhyChooseUs and Partners sections.
- */
+
 export default function BlogGrid({
   limit,
   showSectionHeader = false,
@@ -45,7 +34,6 @@ export default function BlogGrid({
           </div>
         )}
 
-        {/* Responsive grid: auto-fit with min 290px */}
         <div
           className="grid gap-7"
           style={{
