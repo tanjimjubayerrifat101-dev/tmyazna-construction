@@ -37,7 +37,12 @@ export default function Breadcrumbs({
 
   return (
     <section className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28 text-white isolate">
+
       {/* Background Image */}
+            <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-36 bg-linear-to-b from-black/60 via-black/40 to-transparent"
+      />
       <Image
         src={image}
         alt={imageAlt}

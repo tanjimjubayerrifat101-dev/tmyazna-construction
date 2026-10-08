@@ -22,7 +22,7 @@ export default function Hero() {
   const swiperRef = useRef<SwiperInstance | null>(null);
 
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0">
         <Swiper
           aria-label="Featured content"
@@ -55,6 +55,10 @@ export default function Hero() {
         </Swiper>
       </div>
       <div className="pointer-events-none absolute inset-0 z-10 bg-primary/20" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-36 bg-linear-to-b from-black/80 via-black/50 to-transparent"
+      />
 
       <div className="container relative z-20 h-full w-full">
         <div className="relative flex h-full w-full flex-col items-start justify-center">

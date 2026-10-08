@@ -454,15 +454,15 @@ export default function Navbar() {
         </nav>
 
         {/* Right Section Actions: Search, Language Switch & Animated Hamburger Menu */}
-        <div className="flex shrink-0 items-center ">
+        <div className="flex h-full shrink-0 items-center">
           {/* Search Trigger */}
-          <div className="relative hidden shrink-0 md:block">
+          <div className="relative hidden h-full shrink-0 md:block">
             <button
               type="button"
               onClick={toggleSearch}
               aria-label={t("search")}
               aria-expanded={searchOpen}
-              className={`group relative cursor-pointer flex h-10 w-10 items-center justify-center overflow-hidden  transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${
+              className={`group relative flex h-full w-12 cursor-pointer items-center justify-center overflow-hidden transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${
                 scrolled ? "text-gray-700" : "text-[#0287FC]"
               }`}
             >
@@ -556,7 +556,7 @@ export default function Navbar() {
           <Link
             href={pathname}
             locale={otherLocale}
-            className="group relative inline-flex h-10 shrink-0 items-center justify-center overflow-hidden px-3 text-sm font-semibold text-primary transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            className="group relative inline-flex h-full shrink-0 items-center justify-center overflow-hidden px-3 text-sm font-semibold text-primary transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <span
               className={`absolute inset-0 ${
