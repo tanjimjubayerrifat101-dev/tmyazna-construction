@@ -32,7 +32,7 @@ export default function MissionVisionSection() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-muted/20 py-20 md:py-28">
+    <section id="vision" className="relative w-full overflow-hidden bg-muted/20 py-20 md:py-28">
       <div className="container relative z-10">
         {/* Top Grid: Mission Card on Left + Dedicated To Cards on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-8">

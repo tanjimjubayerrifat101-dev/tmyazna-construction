@@ -67,7 +67,7 @@ export default function TeamSection() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-muted/20 py-16 md:py-24">
+    <section id="leadership"  className="relative w-full overflow-hidden bg-muted/20 py-16 md:py-24">
       <div className="container">
         {/* ── Section Header — centered ── */}
         <div className="mb-10 md:mb-14 text-center">

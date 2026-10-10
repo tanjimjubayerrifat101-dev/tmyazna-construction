@@ -9,11 +9,11 @@ export const NAV: NavItem[] = [
     key: 'about',
     groups: [
       { groupKey: 'company', items: [
-        { key: 'aboutTmyazna', href: '/about', icon: Building2 },
-        { key: 'mvv', href: '/mission-vision-values', icon: Star },
+        { key: 'aboutTmyazna', href: '/about#about-us', icon: Building2 },
+        { key: 'mvv', href: '/about#vision', icon: Star },
       ]},
       { groupKey: 'people', items: [
-        { key: 'leadership', href: '/leadership', icon: Users },
+        { key: 'leadership', href: '/about#leadership', icon: Users },
       ]},
     ],
   },

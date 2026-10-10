@@ -17,7 +17,7 @@ export default function AboutUsSection() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-background py-20 md:py-28 lg:py-32">
+    <section id="about-us" className="relative w-full overflow-hidden bg-background py-20 md:py-28 lg:py-32">
       <div className="container relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Content, Checklist, Signature */}
