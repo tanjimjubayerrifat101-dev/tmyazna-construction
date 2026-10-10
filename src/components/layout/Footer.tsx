@@ -33,16 +33,16 @@ export default function Footer() {
   const t = useTranslations("Footer");
 
   const businessLinesLinks = [
-    { label: t("links.systemsIntegration"), href: "/services" },
-    { label: t("links.construction"), href: "/services" },
-    { label: t("links.facilityServices"), href: "/services" },
-    { label: t("links.manpower"), href: "/services" },
-    { label: t("links.environmental"), href: "/services" },
+    { label: t("links.systemsIntegration"), href: "/service/systems-integration" },
+    { label: t("links.construction"), href: "/service/construction" },
+    { label: t("links.facilityServices"), href: "/service/facility-services" },
+    { label: t("links.manpower"), href: "/service/manpower" },
+    { label: t("links.environmental"), href: "/service/environmental" },
   ];
 
   const companyLinks = [
     { label: t("links.aboutUs"), href: "/about" },
-    { label: t("links.ourServices"), href: "/services" },
+    { label: t("links.ourServices"), href: "/service" },
     { label: t("links.ourLeadership"), href: "/leadership" },
     { label: t("links.mediaCenter"), href: "/media" },
     { label: t("links.contact"), href: "/contact" },

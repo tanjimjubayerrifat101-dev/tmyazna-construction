@@ -7,6 +7,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollExperience from "@/components/layout/ScrollExperience";
+import CustomCursor from "@/components/layout/CustomCursor";
 import { routing } from "@/i18n/routing";
 
 
@@ -56,6 +57,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
           {children}
           <Footer />
           <ScrollExperience locale={local} />
+          <CustomCursor />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -17,7 +17,7 @@ export const NAV: NavItem[] = [
       ]},
     ],
   },
-  { key: 'services', href: '/services' },
+  { key: 'services', href: '/service' },
   { key: 'projects', href: '/projects' },
   {
     key: 'credentials',

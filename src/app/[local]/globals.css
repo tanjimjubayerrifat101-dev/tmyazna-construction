@@ -324,6 +324,39 @@ body {
   }
 }
 
+
+/* ─── Team Section Swiper Pagination ──────────────────────────────────────── */
+
+.team-swiper.swiper {
+  overflow: visible;
+}
+
+.team-swiper-pagination.swiper-pagination {
+  position: relative;
+  inset: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.team-swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 !important;
+  border-radius: 9999px;
+  background-color: var(--color-primary, #004187);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.team-swiper-pagination .swiper-pagination-bullet-active {
+  width: 28px;
+  background-color: var(--color-secondary, #0086ff);
+  opacity: 1;
+}
+
 .scroll-top-button {
   isolation: isolate;
   opacity: 0;
