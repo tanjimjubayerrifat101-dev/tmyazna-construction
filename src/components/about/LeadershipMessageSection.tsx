@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { ShieldCheck, Award } from "lucide-react";
 import FadeUp from "@/utils/FadeUp";
 import SlideHeadingLeft from "@/utils/SlideHeading";
-import leaderImg from "@/assets/home/why-choose/why1.jpeg";
+import leaderImg from "@/assets/about/ceo.png";
 
 export default function LeadershipMessageSection() {
   const t = useTranslations("AboutPage.leadership");

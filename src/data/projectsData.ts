@@ -41,24 +41,49 @@ export interface ProjectStat {
   target: number;
   prefix?: string;
   suffix?: string;
+  prefixAr?: string;
+  suffixAr?: string;
   decimals?: number;
   label: string;
+  labelAr: string;
+}
+
+export interface ProjectArabicContent {
+  title: string;
+  sector: string;
+  status: string;
+  location: string;
+  description: string;
+  value: string;
+}
+
+export interface LocalizedProjectItem extends ProjectItem {
+  statusText: string;
 }
 
 export const PROJECTS_STATS: ProjectStat[] = [
-  { target: 40, suffix: "+", label: "Projects Delivered" },
-  { target: 1.6, prefix: "SAR ", suffix: "B", decimals: 1, label: "Portfolio Value" },
-  { target: 13, label: "Regions Covered" },
-  { target: 5, label: "Business Sectors" },
+  { target: 40, suffix: "+", label: "Projects Delivered", labelAr: "مشروعاً تم إنجازه" },
+  {
+    target: 1.6,
+    prefix: "SAR ",
+    suffix: "B",
+    prefixAr: "",
+    suffixAr: " مليار ريال",
+    decimals: 1,
+    label: "Portfolio Value",
+    labelAr: "قيمة المحفظة",
+  },
+  { target: 13, label: "Regions Covered", labelAr: "منطقة نغطيها" },
+  { target: 5, label: "Business Sectors", labelAr: "قطاعات أعمال" },
 ];
 
-export const PROJECT_SECTORS: { label: string; slug: ProjectSectorSlug }[] = [
-  { label: "All", slug: "all" },
-  { label: "Systems Integration", slug: "systems-integration" },
-  { label: "Construction", slug: "construction" },
-  { label: "Facility Services", slug: "facility-services" },
-  { label: "Manpower", slug: "manpower" },
-  { label: "Environmental", slug: "environmental" },
+export const PROJECT_SECTORS: { label: string; labelAr: string; slug: ProjectSectorSlug }[] = [
+  { label: "All", labelAr: "الكل", slug: "all" },
+  { label: "Systems Integration", labelAr: "تكامل الأنظمة", slug: "systems-integration" },
+  { label: "Construction", labelAr: "الإنشاءات", slug: "construction" },
+  { label: "Facility Services", labelAr: "خدمات المرافق", slug: "facility-services" },
+  { label: "Manpower", labelAr: "القوى العاملة", slug: "manpower" },
+  { label: "Environmental", labelAr: "الخدمات البيئية", slug: "environmental" },
 ];
 
 export const FLAGSHIP_PROJECT: ProjectItem = {
@@ -260,3 +285,153 @@ export const PROJECTS_LIST: ProjectItem[] = [
     image: srviceHomeImg,
   },
 ];
+
+const PROJECTS_ARABIC: Record<string, ProjectArabicContent> = {
+  "flagship-king-salman-park": {
+    title: "حديقة الملك سلمان — تكامل الأنظمة الكهروميكانيكية والذكية",
+    sector: "تكامل الأنظمة",
+    status: "قيد التنفيذ",
+    location: "منطقة الرياض",
+    description:
+      "تكامل شامل لأنظمة الميكانيكا والكهرباء والسباكة وأنظمة إدارة المباني الذكية في مشروع بارز ضمن حديقة الملك سلمان، إحدى أكبر الحدائق الحضرية في العالم.",
+    value: "٤٨٠ مليون ريال",
+  },
+  "proj-1": {
+    title: "حديقة الملك سلمان — الأنظمة الكهروميكانيكية والذكية",
+    sector: "تكامل الأنظمة",
+    status: "قيد التنفيذ",
+    location: "منطقة الرياض",
+    description:
+      "تكامل شامل للأنظمة الكهروميكانيكية وأنظمة إدارة المباني الذكية ضمن مشروع تطوير بارز في الحديقة.",
+    value: "٤٨٠ مليون ريال",
+  },
+  "proj-2": {
+    title: "محطة معالجة المياه ومياه الصرف الصناعي",
+    sector: "الخدمات البيئية",
+    status: "قيد التنفيذ",
+    location: "المنطقة الشرقية",
+    description:
+      "تصميم وإنشاء وتشغيل منشأة متقدمة لمعالجة المياه تخدم تجمعاً صناعياً.",
+    value: "٢١٠ ملايين ريال",
+  },
+  "proj-3": {
+    title: "مشروع تطوير في نيوم — حزمة أنظمة كهروميكانيكية متكاملة",
+    sector: "تكامل الأنظمة",
+    status: "في مرحلة التخطيط",
+    location: "منطقة تبوك",
+    description:
+      "حزمة متكاملة من أنظمة الميكانيكا والكهرباء وتقنية المعلومات والاتصالات لمشروع بارز في نيوم.",
+    value: "٣٦٠ مليون ريال",
+  },
+  "proj-4": {
+    title: "واجهة جدة البحرية — التجهيز الداخلي",
+    sector: "الإنشاءات",
+    status: "مكتمل",
+    location: "منطقة مكة المكرمة",
+    description:
+      "أعمال تجهيز وتشطيب داخلي عالية الجودة لمعْلم تجاري على الواجهة البحرية للبحر الأحمر.",
+    value: "١٤٥ مليون ريال",
+  },
+  "proj-5": {
+    title: "حرم جامعي إقليمي — إدارة متكاملة للمرافق",
+    sector: "خدمات المرافق",
+    status: "قيد التنفيذ",
+    location: "القصيم",
+    description:
+      "عقد لمدة خمس سنوات لإدارة المرافق الفنية وغير الفنية في حرم مؤسسي رئيسي.",
+    value: "٩٢ مليون ريال",
+  },
+  "proj-6": {
+    title: "أعمال البنية التحتية في مرتفعات أبها",
+    sector: "الإنشاءات",
+    status: "قيد التنفيذ",
+    location: "منطقة عسير",
+    description:
+      "أعمال مدنية وإنشائية للبنية التحتية تدعم التنمية السياحية في مرتفعات عسير.",
+    value: "١٧٥ مليون ريال",
+  },
+  "proj-7": {
+    title: "برنامج توفير الكوادر الفنية",
+    sector: "القوى العاملة",
+    status: "قيد التنفيذ",
+    location: "منطقة نجران",
+    description:
+      "توفير وإدارة فرق فنية معتمدة لدعم أعمال التشغيل والصيانة.",
+    value: "٦٢ مليون ريال",
+  },
+  "proj-8": {
+    title: "برنامج الإدارة الذكية للنفايات",
+    sector: "الخدمات البيئية",
+    status: "مكتمل",
+    location: "الجوف",
+    description:
+      "تطبيق حلول جمع النفايات وفرزها وإعادة تدويرها باستخدام المستشعرات في المرافق البلدية.",
+    value: "٤٨ مليون ريال",
+  },
+  "proj-9": {
+    title: "مجمع مساجد — التشغيل والصيانة",
+    sector: "خدمات المرافق",
+    status: "قيد التنفيذ",
+    location: "منطقة المدينة المنورة",
+    description:
+      "تشغيل وصيانة شاملة تشمل النظافة وصيانة الأنظمة الكهروميكانيكية في مجمع رئيسي للمساجد والزوار.",
+    value: "٧٨ مليون ريال",
+  },
+  "proj-10": {
+    title: "البنية التحتية للمنطقة التراثية في بوابة الدرعية",
+    sector: "الإنشاءات",
+    status: "قيد التنفيذ",
+    location: "منطقة الرياض",
+    description:
+      "أعمال مدنية وإنشائية دقيقة، وتنسيق واجهات الطوب الطيني التقليدية، وأنفاق للأنظمة الكهروميكانيكية تحت الأرض في المنطقة التاريخية.",
+    value: "٢٢٠ مليون ريال",
+  },
+  "proj-11": {
+    title: "مطار البحر الأحمر الدولي — الأنظمة الكهروميكانيكية للمبنى",
+    sector: "تكامل الأنظمة",
+    status: "مكتمل",
+    location: "منطقة تبوك",
+    description:
+      "تنفيذ أنظمة السلامة وإدارة أمتعة المسافرين عبر نظام إدارة المباني وأنظمة التبريد المركزي لمبنى المطار الفاخر المستدام.",
+    value: "٣١٠ ملايين ريال",
+  },
+  "proj-12": {
+    title: "حديقة السرعة في القدية — شبكات المرافق والكهرباء",
+    sector: "تكامل الأنظمة",
+    status: "في مرحلة التخطيط",
+    location: "منطقة الرياض",
+    description:
+      "تكامل محطة كهرباء فرعية عالية الجهد وشبكات القياس عن بُعد على امتداد الحلبة وأنظمة آلية لإدارة المياه في مجمع رياضة المحركات.",
+    value: "١٨٠ مليون ريال",
+  },
+  "proj-13": {
+    title: "مترو الرياض، الخط الثالث — إدارة المرافق الفنية للمحطات",
+    sector: "خدمات المرافق",
+    status: "قيد التنفيذ",
+    location: "منطقة الرياض",
+    description:
+      "تشغيل متكامل للمرافق الفنية وصيانة وقائية للسلالم المتحركة وأنظمة التكييف، مع الالتزام بمتطلبات سلامة الركاب في محطات النقل.",
+    value: "٨٥ مليون ريال",
+  },
+};
+
+export function getLocalizedProject(
+  project: ProjectItem,
+  isRtl: boolean
+): LocalizedProjectItem {
+  const arabic = isRtl ? PROJECTS_ARABIC[project.id] : undefined;
+
+  return {
+    ...project,
+    ...(arabic
+      ? {
+          title: arabic.title,
+          sector: arabic.sector,
+          location: arabic.location,
+          description: arabic.description,
+          value: arabic.value,
+        }
+      : {}),
+    statusText: arabic?.status ?? project.status,
+  };
+}

@@ -162,6 +162,8 @@ body {
 .footer-rolling-text-wrap {
   position: relative;
   display: inline-block;
+  width: max-content;
+  flex: 0 0 auto;
   overflow: hidden;
   height: 1.5em;
   line-height: 1.5em;
@@ -169,6 +171,7 @@ body {
 
 .footer-rolling-text-wrap .footer-text-item {
   display: block;
+  white-space: nowrap;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }

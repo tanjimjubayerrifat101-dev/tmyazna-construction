@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   PROJECT_SECTORS,
   PROJECTS_LIST,
+  getLocalizedProject,
   type ProjectSectorSlug,
 } from "@/data/projectsData";
 import {
@@ -25,6 +27,7 @@ const ITEMS_PER_PAGE = 12;
 export default function ProjectsFilterGrid({
   isRtl = false,
 }: ProjectsFilterGridProps) {
+  const t = useTranslations("ProjectsPage");
   const [activeSector, setActiveSector] = useState<ProjectSectorSlug>("all");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -39,6 +42,9 @@ export default function ProjectsFilterGrid({
   const displayedProjects = filteredProjects.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
+  );
+  const localizedProjects = displayedProjects.map((project) =>
+    getLocalizedProject(project, isRtl)
   );
 
   const handleSectorChange = (slug: ProjectSectorSlug) => {
@@ -106,7 +112,7 @@ export default function ProjectsFilterGrid({
                   }
                 `}
               >
-                {sector.label}
+                {isRtl ? sector.labelAr : sector.label}
               </button>
             );
           })}
@@ -115,7 +121,7 @@ export default function ProjectsFilterGrid({
 
       {/* Modern Projects Grid (4 columns on 2xl devices as requested) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8">
-        {displayedProjects.map((project) => (
+        {localizedProjects.map((project) => (
           <div
             key={project.id}
             className="group relative flex flex-col bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-slate-300 transition-all duration-500 hover:-translate-y-1.5 select-none"
@@ -167,7 +173,7 @@ export default function ProjectsFilterGrid({
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Value
+                      {t("value")}
                     </span>
                     <span className="text-base sm:text-lg font-bold text-[#001833]">
                       {project.value}
@@ -175,7 +181,7 @@ export default function ProjectsFilterGrid({
                   </div>
                   <div className="text-center">
                     <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Year
+                      {t("year")}
                     </span>
                     <span className="text-base sm:text-lg font-semibold text-slate-700">
                       {project.year}
@@ -183,7 +189,7 @@ export default function ProjectsFilterGrid({
                   </div>
                   <div className="text-end">
                     <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                      Progress
+                      {t("progress")}
                     </span>
                     <span
                       className={`text-base sm:text-lg font-bold ${

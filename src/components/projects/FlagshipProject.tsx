@@ -1,15 +1,17 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import { FLAGSHIP_PROJECT } from "@/data/projectsData";
+import { FLAGSHIP_PROJECT, getLocalizedProject } from "@/data/projectsData";
 
 interface FlagshipProjectProps {
   isRtl?: boolean;
 }
 
 export default function FlagshipProject({ isRtl = false }: FlagshipProjectProps) {
-  const project = FLAGSHIP_PROJECT;
+  const t = useTranslations("ProjectsPage");
+  const project = getLocalizedProject(FLAGSHIP_PROJECT, isRtl);
 
   return (
     <section className="container mb-20 lg:mb-28">
@@ -70,7 +72,7 @@ export default function FlagshipProject({ isRtl = false }: FlagshipProjectProps)
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-                    Value
+                    {t("value")}
                   </span>
                   <span className="text-base sm:text-lg lg:text-xl font-bold text-[#001833]">
                     {project.value}
@@ -78,7 +80,7 @@ export default function FlagshipProject({ isRtl = false }: FlagshipProjectProps)
                 </div>
                 <div>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-                    Year
+                    {t("year")}
                   </span>
                   <span className="text-base sm:text-lg lg:text-xl font-bold text-[#001833]">
                     {project.year}
@@ -86,7 +88,7 @@ export default function FlagshipProject({ isRtl = false }: FlagshipProjectProps)
                 </div>
                 <div>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
-                    Progress
+                    {t("progress")}
                   </span>
                   <span className="text-base sm:text-lg lg:text-xl font-bold text-secondary">
                     {project.progress}%

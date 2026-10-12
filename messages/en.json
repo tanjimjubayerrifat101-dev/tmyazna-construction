@@ -286,7 +286,7 @@
     "overviewEyebrow": "What we do",
     "overviewHeading": "Services overview",
     "overviewSubheading": "An integrated portfolio, built for the Kingdom's transformation.",
-    "overviewIntro": "At TMYAZNA Company Limited, we are proud to support Saudi Arabia's transformation journey—bringing excellence, sustainability, and innovation to every project.",
+    "overviewIntro": "At TMYAZNA Company Limited, we are honored to be at the forefront of Saudi Arabia's transformation journey, driving excellence, sustainability, and innovation in every project we deliver. We offer general contracting services across all regions of Saudi Arabia, focusing on the five service lines below.",
     "contractingHeading": "General contracting",
     "contractingDescription": "We deliver dependable general contracting services across Saudi Arabia through five complementary service lines.",
     "serviceLines": {
@@ -296,11 +296,16 @@
       "manpower": "Manpower services",
       "environmental": "Environmental services"
     },
-    "overviewSupportingText": "Our services help build a sustainable future, strengthen infrastructure, and support economic diversification while creating opportunities for local talent and industries.",
+    "overviewSupportingText": "Our services are designed to build a sustainable future, enhance infrastructure, and support economic diversification while creating opportunities for local talent and industries. We provide an integrated portfolio of engineering, construction, and facility solutions that support Saudi Arabia's ongoing transformation under Vision 2030 — building resilient infrastructure, enhancing operational efficiency, and creating sustainable value for our clients across both public and private sectors.",
     "visionEyebrow": "Our commitment",
     "visionHeading": "Vision 2030",
     "visionImageAlt": "Saudi Vision 2030 logo",
     "visionDescription": "We provide an integrated portfolio of engineering, construction, and facility solutions that supports Saudi Arabia's ongoing transformation—building resilient infrastructure, improving operational efficiency, and creating sustainable value for public- and private-sector clients."
+  },
+  "ProjectsPage": {
+    "value": "Value",
+    "year": "Year",
+    "progress": "Progress"
   },
   "AboutPage": {
     "breadcrumb": "About Us",
@@ -332,29 +337,29 @@
       "p2": "We combine technical expertise, rigorous project management, and state-of-the-art construction technologies to deliver lasting value. Every project we undertake reflects our commitment to safety, innovation, and client success."
     },
     "quoteBanner": {
-      "text": "Our distinguished team has earned more than twenty-two years of experience in regional and international projects."
+      "text": "Great things in business are never done by one person.They’re done by a team of people."
     },
     "leadership": {
       "eyebrow": "EXECUTIVE MESSAGE",
       "headingPart1": "Shaping the Kingdom's",
       "headingPart2": "Future Landscape",
       "leaderName": "Abdulrahman Al-Tammami",
-      "leaderRole": "Executive Director & Managing Director",
-      "col1": "At TMYAZNA, our journey has been defined by an unwavering dedication to excellence and national pride. From our early beginnings to becoming a respected force in civil engineering and construction, every milestone has been earned through integrity, grit, and the trust of our clients. We strive not just to build structures, but to establish long-term partnerships that shape the skyline and future of our nation.",
-      "col2": "Looking ahead, Saudi Arabia is experiencing a historic economic and urban transformation under Vision 2030. At TMYAZNA, we are fully committed to playing an active role in this ambitious journey. By embracing cutting-edge engineering methodologies, sustainable building standards, and empowering world-class talent, we ensure that every project we deliver stands as a testament to durability, innovation, and pride."
+      "leaderRole": "Chairman & Chief Executive Officer",
+      "col1": "At TMYAZNA, our mission aligns with Saudi Vision 2030, the Kingdom's roadmap for a diversified and sustainable economy. We take pride in contributing to this transformation through infrastructure excellence, engineering innovation, and sustainable solutions. Our collaborations with NEOM, Red Sea Global, and Qiddiya are more than projects; they signify our commitment to trust and reliability. By utilizing modern technologies and local expertise, we create a future where efficiency meets sustainability.",
+      "col2": "Looking forward, our strategy emphasizes technological advancement, sustainable growth, and operational excellence. We are committed to smart systems and environmentally responsible practices, aligning with the Saudi Green Initiatives and supporting the goals of Vision 2030.As the CEO of TMYAZNA Limited Company, I am grateful to our clients, partners, and employees for their unwavering support."
     },
     "missionVision": {
       "missionTitle": "Our Mission",
-      "missionDesc": "To deliver world-class engineering and construction solutions that empower Saudi Arabia's growth, ensuring safety, sustainability, and unmatched quality across every project we undertake.",
+      "missionDesc": "Our mission is to deliver reliable, high-quality, efficient and sustainable solutions across construction, systems integration and facility services. We strive to exceed client expectations through innovation, operational excellence and a strong commitment to safety and environmental responsibility.",
       "dedicatedHeading": "We Are Dedicated To",
       "d1Title": "Engineering Excellence",
-      "d1Desc": "Delivering engineering excellence with precision, on-time project completion, and strict safety standards.",
+      "d1Desc": "Driving economic diversification and local empowerment by supporting Saudi Vision 2030.",
       "d2Title": "Sustainable Innovation",
-      "d2Desc": "Fostering sustainable construction methodologies that contribute directly to Vision 2030 urban development goals.",
+      "d2Desc": "Delivering smart, eco-friendly, reliable and cost-effective solutions in engineering and maintenance.",
       "d3Title": "Client Partnership",
-      "d3Desc": "Building long-term collaborative client partnerships founded on trust, transparency, and reliable execution.",
+      "d3Desc": "Ensuring the highest quality in all services, committed to excellence and client satisfaction.",
       "visionTitle": "Our Vision",
-      "visionDesc": "To be the Kingdom's leading engineering and contracting partner, recognized for setting benchmarks in innovation, technical mastery, and sustainable urban development."
+      "visionDesc": "“To be the leader of innovative and sustainable solutions that empower communities and drive the development of a modern Kingdom.”"
     },
     "stats": {
       "stat1": { "value": "2022", "suffix": "", "label": "Year Established" },
@@ -367,15 +372,15 @@
       "headingPart1": "Core",
       "headingPart2": "Values",
       "subtitle": "The foundational principles that guide every decision and project at TMYAZNA.",
-      "clientFirst": { "title": "Client First", "desc": "Prioritizing client goals with proactive communication and transparent execution." },
-      "flexibility": { "title": "Flexibility", "desc": "Adapting swiftly to complex project scopes and evolving engineering demands." },
-      "teamwork": { "title": "Teamwork", "desc": "Fostering unified collaboration between multidisciplinary teams and site workers." },
-      "quality": { "title": "Quality", "desc": "Exceeding international civil standards through meticulous quality control at every phase." },
-      "empowerment": { "title": "Empowerment", "desc": "Investing in our human capital with continuous technical training and career development." },
-      "excellence": { "title": "Excellence", "desc": "Pursuing perfection in craftsmanship, safety compliance, and sustainable building." },
-      "safety": { "title": "Safety", "desc": "Zero-compromise approach to site occupational safety and environmental protection." },
-      "integrity": { "title": "Integrity", "desc": "Upholding uncompromising ethical standards, honest reporting, and mutual respect." },
-      "innovation": { "title": "Innovation", "desc": "Leveraging modern BIM technology, advanced materials, and cutting-edge engineering methods." }
+      "clientFirst": { "title": "High Effciency:", "desc": "Optimizing processes to deliver results promptly and effectively" },
+      "flexibility": { "title": "Quality:", "desc": "Committing to delivering superior products and services." },
+      "teamwork": { "title": "Safety:", "desc": "Prioritizing the health and welfare of our employees,clients, and the community." },
+      "quality": { "title": "Reliability:", "desc": "Building trust through dependable performance and accountability." },
+      "empowerment": { "title": "Empowerment:", "desc": "Encouraging and enabling our employees to take initiative and responsibility." },
+      "excellence": { "title": "Integrity:", "desc": "Maintaining honesty and transparency in all our interactions." },
+      "safety": { "title": "Teamwork:", "desc": "Fostering collaboration and mutual support among our team members." },
+      "integrity": { "title": "Excellence:", "desc": "Striving for the highest standards in everything we do." },
+      "innovation": { "title": "Innovation:", "desc": "Embracing new ideas andtechnologies to drive progress." }
     },
     "team": {
       "eyebrow": "EXECUTIVE LEADERSHIP",

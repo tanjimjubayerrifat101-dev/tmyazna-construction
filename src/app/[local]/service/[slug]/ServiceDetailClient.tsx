@@ -2,7 +2,10 @@
 
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { SERVICES_DATA, type ServiceItemData } from "@/data/servicesData";
+import {
+  getLocalizedService,
+  SERVICES_DATA,
+} from "@/data/servicesData";
 import SystemsIntegrationTabs from "@/components/service/details/SystemsIntegrationTabs";
 import StandardServiceDetail from "@/components/service/details/StandardServiceDetail";
 import ServiceCatalog from "@/components/service/details/ServiceCatalog";
@@ -17,8 +20,9 @@ export default function ServiceDetailClient({
   slug,
   isRtl = false,
 }: ServiceDetailClientProps) {
-  const service = SERVICES_DATA.find((s) => s.slug === slug);
-  if (!service) return null;
+  const sourceService = SERVICES_DATA.find((s) => s.slug === slug);
+  if (!sourceService) return null;
+  const service = getLocalizedService(sourceService, isRtl);
 
   const isSystemsIntegration = service.slug === "systems-integration" && !!service.subDisciplines;
 

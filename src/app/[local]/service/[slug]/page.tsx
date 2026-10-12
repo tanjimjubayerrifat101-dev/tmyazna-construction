@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import Breadcrumbs from "@/utils/Breadcrumb";
-import { SERVICES_DATA } from "@/data/servicesData";
+import { getLocalizedService, SERVICES_DATA } from "@/data/servicesData";
 import ServiceDetailClient from "./ServiceDetailClient";
 
 interface PageProps {
@@ -25,17 +25,18 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const locale = await getLocale();
   const t = await getTranslations("ServicePage");
   const isRtl = locale === "ar";
+  const localizedService = getLocalizedService(service, isRtl);
 
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Banner utilizing existing Breadcrumbs component */}
       <Breadcrumbs
-        title={service.name}
+        title={localizedService.name}
         eyebrow={t("eyebrow") || "OUR SERVICES"}
-        heading={service.heading}
-        description={service.description}
+        heading={localizedService.heading}
+        description={localizedService.description}
         image={service.image}
-        imageAlt={`${service.name} — TMYAZNA Company Limited`}
+        imageAlt={`${localizedService.name} — TMYAZNA Company Limited`}
       />
 
       {/* Main Service Details Content */}

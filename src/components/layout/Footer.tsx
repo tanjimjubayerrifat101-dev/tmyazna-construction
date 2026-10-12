@@ -43,7 +43,7 @@ export default function Footer() {
   const companyLinks = [
     { label: t("links.aboutUs"), href: "/about" },
     { label: t("links.ourServices"), href: "/service" },
-    { label: t("links.ourLeadership"), href: "/leadership" },
+    { label: t("links.ourLeadership"), href: "/about" },
     { label: t("links.mediaCenter"), href: "/media" },
     { label: t("links.contact"), href: "/contact" },
   ];

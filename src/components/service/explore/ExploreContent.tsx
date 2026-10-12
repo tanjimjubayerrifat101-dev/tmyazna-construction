@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import RollingButton from "@/utils/RollingButton";
-import { type ServiceItemData } from "@/data/servicesData";
+import { getLocalizedService, type ServiceItemData } from "@/data/servicesData";
 
 interface ExploreContentProps {
   service: ServiceItemData;
@@ -11,25 +11,26 @@ interface ExploreContentProps {
 export default function ExploreContent({ service }: ExploreContentProps) {
   const locale = useLocale();
   const isRtl = locale === "ar";
+  const localizedService = getLocalizedService(service, isRtl);
 
   // Split heading to colorize "Expertise" in accent blue if present
-  const headingWords = service.heading.split(" ");
+  const headingWords = localizedService.heading.split(" ");
   const lastWord = headingWords[headingWords.length - 1];
   const headingPrefix = headingWords.slice(0, -1).join(" ");
   const hasExpertiseAccent = lastWord?.toLowerCase() === "expertise";
 
   return (
     <div
-      key={service.id}
-      id={`service-panel-${service.id}`}
+      key={localizedService.id}
+      id={`service-panel-${localizedService.id}`}
       role="tabpanel"
-      aria-labelledby={`service-tab-${service.id}`}
+      aria-labelledby={`service-tab-${localizedService.id}`}
       className="flex flex-col justify-center animate-fadeIn"
     >
       {/* Index Counter */}
       <div className="flex items-center gap-2 mb-4 text-sm font-bold tracking-widest text-secondary">
         <span className="w-8 h-[2px] bg-secondary" />
-        <span>{service.number}</span>
+        <span>{localizedService.number}</span>
       </div>
 
       {/* Main Heading with Accent Text */}
@@ -40,20 +41,20 @@ export default function ExploreContent({ service }: ExploreContentProps) {
             <span className="text-secondary block mt-1">{lastWord}</span>
           </>
         ) : (
-          service.heading
+          localizedService.heading
         )}
       </h2>
 
       {/* Description Paragraph */}
       <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl font-normal">
-        {service.description}
+        {localizedService.description}
       </p>
 
       {/* Single Read More CTA Button using website standard RollingButton */}
       <div className="pt-2">
         <RollingButton
           text={isRtl ? "اقرأ المزيد" : "Read more"}
-          href={`/service/${service.slug}`}
+          href={`/service/${localizedService.slug}`}
           variant="primary"
           className="shadow-md"
         />

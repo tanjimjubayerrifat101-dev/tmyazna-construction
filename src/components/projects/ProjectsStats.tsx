@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { PROJECTS_STATS, type ProjectStat } from "@/data/projectsData";
+import { PROJECTS_STATS } from "@/data/projectsData";
 
 function AnimatedStatCounter({
   target,
@@ -98,14 +98,14 @@ export default function ProjectsStats({ isRtl = false }: ProjectsStatsProps) {
             <span className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#001833] leading-none mb-2 font-mono">
               <AnimatedStatCounter
                 target={stat.target}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
+                prefix={isRtl ? stat.prefixAr ?? stat.prefix : stat.prefix}
+                suffix={isRtl ? stat.suffixAr ?? stat.suffix : stat.suffix}
                 decimals={stat.decimals}
                 hasStarted={hasAnimated}
               />
             </span>
             <span className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wider">
-              {stat.label}
+              {isRtl ? stat.labelAr : stat.label}
             </span>
           </div>
         ))}

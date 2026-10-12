@@ -20,7 +20,7 @@ export default function StandardServiceDetail({
 
         {/* Detailed Description */}
         <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal mb-10 max-w-4xl">
-          {service.description}
+          {service.coreDescription || service.description}
         </p>
 
         {/* Core Capabilities Section */}
