@@ -1,26 +1,32 @@
-/**
- * Typed data source for the "Our Partners" section.
- *
- * Fields:
- *  - logo    : path relative to /public (e.g. "/partners/roshn.svg").
- *              Leave undefined to render a text-chip fallback.
- *  - logoAr  : optional Arabic-variant logo (same format).
- *              Falls back to `logo` when not provided.
- *  - nameKey : i18n key under Partners.partners.*
- *  - initials: used for the monogram avatar when no logo is available.
- */
+import type { StaticImageData } from "next/image";
+import alRajhiLogo from "@/assets/partner/AlRajhiBankLogo.svg";
+import almoallamLogo from "@/assets/partner/Almoallam-logo.svg";
+import bicscLogo from "@/assets/partner/BICSc-Blue-logo-RGB-01-e1639057859456.png";
+import jordanPioneerLogo from "@/assets/partner/Jordan-Pioneer-Logo-White.png";
+import abilityLogo from "@/assets/partner/ability.svg";
+import alHajryLogo from "@/assets/partner/al-hajry-footer-logo.png";
+import alinmaLogo from "@/assets/partner/alinma-logo.svg";
+import awacoLogo from "@/assets/partner/awacosa.jpg";
+import kahatainLogo from "@/assets/partner/kahatain.png";
+import libanetLogo from "@/assets/partner/libanet.svg";
+import nahilLogo from "@/assets/partner/nahil-logo-11-1.svg";
+import millenniumLogo from "@/assets/partner/red-millennium-logo.svg";
+import sabLogo from "@/assets/partner/sab-new-logo.svg";
+import setraaLogo from "@/assets/partner/setra.png";
+import msajidonaLogo from "@/assets/partner/smc-footer-logo.svg";
+import rtccLogo from "@/assets/partner/job-azureerdge.png";
 
 export interface Partner {
   id: string;
-  nameKey: string;    // e.g. "momrah"  →  t("Partners.partners.momrah")
+  nameKey: string;
   initials: string;
-  logo?: string;      // public-relative path
-  logoAr?: string;    // Arabic-variant logo (optional)
+  logo?: StaticImageData;
+  logoAr?: StaticImageData;
+  href?: string;
 }
 
 export interface PartnerCategory {
   id: string;
-  /** i18n key under Partners.categories.* */
   titleKey: string;
   partners: Partner[];
 }
@@ -29,77 +35,82 @@ export const PARTNER_CATEGORIES: PartnerCategory[] = [
   {
     id: "government",
     titleKey: "government",
-    partners: [
-      { id: "momrah",  nameKey: "momrah",  initials: "MO" },
-      { id: "rega",    nameKey: "rega",    initials: "RE" },
-      { id: "sakani",  nameKey: "sakani",  initials: "SK" },
-    ],
+    partners: [],
   },
   {
     id: "realEstate",
     titleKey: "realEstate",
     partners: [
-      // TODO: Confirm logo paths. The brief states logos exist in project assets,
-      // but they were not found in public/ or src/assets/ during audit (2026-10-01).
-      // Add the correct paths once the files are placed under /public/partners/.
-      { id: "roshn",       nameKey: "roshn",       initials: "RO", logo: undefined /* TODO: "/partners/roshn.svg" */ },
-      { id: "kingSalman",  nameKey: "kingSalman",  initials: "KS", logo: undefined /* TODO: "/partners/king-salman-park.svg" */ },
-      { id: "trojena",     nameKey: "trojena",     initials: "TR", logo: undefined /* TODO: "/partners/trojena.svg" */ },
-      { id: "tbc",         nameKey: "tbc",         initials: "TB", logo: undefined /* TODO: "/partners/tbc.svg" */ },
-      { id: "realEstate5", nameKey: "realEstate5", initials: "R5", logo: undefined /* TODO: add fifth real-estate logo */ },
+      {
+        id: "millennium",
+        nameKey: "millennium",
+        initials: "MH",
+        logo: millenniumLogo,
+        href: "https://www.millenniumhotels.com/",
+      },
     ],
   },
   {
-    id: "funds",
-    titleKey: "funds",
+    id: "generalContracting",
+    titleKey: "generalContracting",
     partners: [
-      { id: "blominvest",     nameKey: "blominvest",     initials: "BL" },
-      { id: "alphaCapital",   nameKey: "alphaCapital",   initials: "AC" },
-      { id: "dirayah",        nameKey: "dirayah",        initials: "DI" },
-      { id: "albilad",        nameKey: "albilad",        initials: "AB" },
+      { id: "setraa", nameKey: "setraa", initials: "SA", logo: setraaLogo, href: "http://www.setraa.com" },
+      { id: "alNabati", nameKey: "alNabati", initials: "AN" },
+      { id: "jordanPioneer", nameKey: "jordanPioneer", initials: "JP", logo: jordanPioneerLogo, href: "https://jordanpioneer.com/" },
+      { id: "almoallam", nameKey: "almoallam", initials: "AM", logo: almoallamLogo, href: "https://almoallam.com/" },
+      { id: "saudiMeters", nameKey: "saudiMeters", initials: "SM" },
+      { id: "shapoorji", nameKey: "shapoorji", initials: "SP" },
+      { id: "rtcc", nameKey: "rtcc", initials: "RT", logo: rtccLogo, href: "https://www.rtcc.com.sa/" },
+      { id: "saudiEmaar", nameKey: "saudiEmaar", initials: "SE" },
     ],
   },
   {
-    id: "financiers",
-    titleKey: "financiers",
+    id: "facilitiesManagement",
+    titleKey: "facilitiesManagement",
     partners: [
-      { id: "snb",           nameKey: "snb",           initials: "SN" },
-      { id: "alRajhi",       nameKey: "alRajhi",       initials: "AR" },
-      { id: "riyadBank",     nameKey: "riyadBank",     initials: "RB" },
-      { id: "alinma",        nameKey: "alinma",        initials: "AL" },
-      { id: "anb",           nameKey: "anb",           initials: "AN" },
-      { id: "sab",           nameKey: "sab",           initials: "SA" },
-      { id: "gib",           nameKey: "gib",           initials: "GI" },
-      { id: "firstFinance",  nameKey: "firstFinance",  initials: "FF" },
+      { id: "muheel", nameKey: "muheel", initials: "MU", href: "https://www.muheel.com/" },
+      { id: "awaco", nameKey: "awaco", initials: "AW", logo: awacoLogo, href: "https://awacosa.com/" },
+      { id: "libanet", nameKey: "libanet", initials: "LI", logo: libanetLogo, href: "https://libanet.aero" },
+      { id: "ncms", nameKey: "ncms", initials: "NC", href: "https://www.ncms.sa/ar" },
+      { id: "alHajry", nameKey: "alHajry", initials: "AH", logo: alHajryLogo, href: "https://alhajry-overseas.com.sa" },
     ],
   },
   {
-    id: "consultancy",
-    titleKey: "consultancy",
+    id: "banks",
+    titleKey: "banks",
     partners: [
-      { id: "knightFrank", nameKey: "knightFrank", initials: "KF" },
-      { id: "jll",         nameKey: "jll",         initials: "JL" },
-      { id: "colliers",    nameKey: "colliers",    initials: "CO" },
-      { id: "pwc",         nameKey: "pwc",         initials: "PW" },
+      { id: "alRajhi", nameKey: "alRajhi", initials: "AR", logo: alRajhiLogo, href: "https://www.alrajhibank.com.sa/" },
+      { id: "sab", nameKey: "sab", initials: "SA", logo: sabLogo, href: "https://www.sab.com/en/personal/" },
+      { id: "alinma", nameKey: "alinma", initials: "AL", logo: alinmaLogo, href: "https://www.alinma.com/" },
     ],
   },
   {
-    id: "operators",
-    titleKey: "operators",
+    id: "healthcare",
+    titleKey: "healthcare",
     partners: [
-      { id: "ritzCarlton", nameKey: "ritzCarlton", initials: "RC" },
-      { id: "nobu",        nameKey: "nobu",        initials: "NB" },
+      { id: "ability", nameKey: "ability", initials: "AB", logo: abilityLogo, href: "https://abilitycomms.com/" },
     ],
   },
   {
-    id: "engineering",
-    titleKey: "engineering",
+    id: "consultancyProfessionalServices",
+    titleKey: "consultancyProfessionalServices",
     partners: [
-      { id: "benoy",       nameKey: "benoy",       initials: "BE" },
-      { id: "cracknell",   nameKey: "cracknell",   initials: "CR" },
-      { id: "dewan",       nameKey: "dewan",       initials: "DE" },
-      { id: "naga",        nameKey: "naga",        initials: "NA" },
-      { id: "darAlOmran",  nameKey: "darAlOmran",  initials: "DO" },
+      { id: "bicsc", nameKey: "bicsc", initials: "BI", logo: bicscLogo, href: "https://bics.org.uk" },
+    ],
+  },
+  {
+    id: "technologyDigitalSolutions",
+    titleKey: "technologyDigitalSolutions",
+    partners: [
+      { id: "nahil", nameKey: "nahil", initials: "NH", logo: nahilLogo, href: "https://nahil.com.sa/ar/" },
+    ],
+  },
+  {
+    id: "nonProfit",
+    titleKey: "nonProfit",
+    partners: [
+      { id: "kahatain", nameKey: "kahatain", initials: "KA", logo: kahatainLogo, href: "https://www.kahatain.org.sa/" },
+      { id: "msajidona", nameKey: "msajidona", initials: "MS", logo: msajidonaLogo, href: "https://store.msajidona.org.sa/" },
     ],
   },
 ];
