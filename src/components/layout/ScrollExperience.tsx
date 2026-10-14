@@ -12,6 +12,34 @@ export default function ScrollExperience({ locale }: { locale: string }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const homeScrollStorageKey = "locale-switch-home-scroll";
+    const targetLocale = sessionStorage.getItem(
+      `${homeScrollStorageKey}-locale`,
+    );
+    const savedScrollY = sessionStorage.getItem(homeScrollStorageKey);
+    let restoreFrame = 0;
+    let restoreNextFrame = 0;
+
+    const restoreHomeScroll = (lenis: Lenis | null) => {
+      if (targetLocale !== locale || savedScrollY === null) return;
+
+      restoreFrame = window.requestAnimationFrame(() => {
+        restoreNextFrame = window.requestAnimationFrame(() => {
+          const scrollY = Number(savedScrollY);
+          if (!Number.isFinite(scrollY)) return;
+
+          if (lenis) {
+            lenis.scrollTo(scrollY, { immediate: true, force: true });
+          } else {
+            window.scrollTo({ top: scrollY, behavior: "instant" });
+          }
+
+          sessionStorage.removeItem(`${homeScrollStorageKey}-locale`);
+          sessionStorage.removeItem(homeScrollStorageKey);
+        });
+      });
+    };
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -31,20 +59,28 @@ export default function ScrollExperience({ locale }: { locale: string }) {
       const handleScroll = () => updateVisibility(window.scrollY);
       window.addEventListener("scroll", handleScroll, { passive: true });
       handleScroll();
+      restoreHomeScroll(null);
 
-      return () => window.removeEventListener("scroll", handleScroll);
+      return () => {
+        window.cancelAnimationFrame(restoreFrame);
+        window.cancelAnimationFrame(restoreNextFrame);
+        window.removeEventListener("scroll", handleScroll);
+      };
     }
 
     const lenis = new Lenis({ autoRaf: true, anchors: true });
     lenisRef.current = lenis;
     lenis.on("scroll", ({ scroll }) => updateVisibility(scroll));
     updateVisibility(window.scrollY);
+    restoreHomeScroll(lenis);
 
     return () => {
+      window.cancelAnimationFrame(restoreFrame);
+      window.cancelAnimationFrame(restoreNextFrame);
       lenis.destroy();
       lenisRef.current = null;
     };
-  }, []);
+  }, [locale]);
 
   const scrollToTop = () => {
     if (lenisRef.current) {

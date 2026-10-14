@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import logo from "@/assets/navbar/tmyzna-logo.png";
@@ -9,12 +9,14 @@ import logo from "@/assets/navbar/tmyzna-logo.png";
 interface FooterLinkProps {
   href: string;
   label: string;
+  dir: "ltr" | "rtl";
 }
 
-function RollingFooterLink({ href, label }: FooterLinkProps) {
+function RollingFooterLink({ href, label, dir }: FooterLinkProps) {
   return (
     <Link
       href={href}
+      dir={dir}
       className="group inline-flex items-center text-[15px] text-gray-300 transition-colors duration-300"
     >
       <span className="footer-rolling-text-wrap">
@@ -31,6 +33,8 @@ function RollingFooterLink({ href, label }: FooterLinkProps) {
 
 export default function Footer() {
   const t = useTranslations("Footer");
+  const isRtl = useLocale() === "ar";
+  const textDirection = isRtl ? "rtl" : "ltr";
 
   const businessLinesLinks = [
     { label: t("links.systemsIntegration"), href: "/service/systems-integration" },
@@ -49,7 +53,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-[#0d1627] text-white pt-16 md:pt-24 pb-12 relative overflow-hidden font-primary">
+    <footer
+      dir="ltr"
+      className={`w-full bg-[#0d1627] text-white pt-16 md:pt-24 pb-12 relative overflow-hidden ${
+        isRtl ? "font-cairo" : "font-primary"
+      }`}
+    >
       {/* Premium glow effect */}
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="absolute top-[-200px] start-1/4 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
@@ -66,7 +75,7 @@ export default function Footer() {
                 className="w-32 md:w-40 brightness-0 invert object-contain"
               />
             </Link>
-            <div className="flex flex-col gap-1 mt-2 text-[14px] text-gray-300 font-medium">
+            <div dir={textDirection} className="flex flex-col gap-1 mt-2 text-[14px] text-gray-300 font-medium">
               <p>{t("tagline")}</p>
             </div>
           </div>
@@ -75,28 +84,28 @@ export default function Footer() {
           <div className="hidden lg:block lg:col-span-1"></div>
 
           {/* Business Lines */}
-          <div className="lg:col-span-2 flex flex-col space-y-6">
+          <div dir={textDirection} className="lg:col-span-2 flex flex-col space-y-6">
             <h4 className="text-[13px] font-bold text-white tracking-widest uppercase">
               {t("sections.businessLines")}
             </h4>
             <ul className="flex flex-col space-y-3.5">
               {businessLinesLinks.map((link, idx) => (
                 <li key={`business-${idx}`}>
-                  <RollingFooterLink href={link.href} label={link.label} />
+                  <RollingFooterLink href={link.href} label={link.label} dir={textDirection} />
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Company */}
-          <div className="lg:col-span-2 flex flex-col space-y-6">
+          <div dir={textDirection} className="lg:col-span-2 flex flex-col space-y-6">
             <h4 className="text-[13px] font-bold text-white tracking-widest uppercase">
               {t("sections.company")}
             </h4>
             <ul className="flex flex-col space-y-3.5">
               {companyLinks.map((link, idx) => (
                 <li key={`company-${idx}`}>
-                  <RollingFooterLink href={link.href} label={link.label} />
+                  <RollingFooterLink href={link.href} label={link.label} dir={textDirection} />
                 </li>
               ))}
             </ul>
@@ -106,25 +115,41 @@ export default function Footer() {
           <div className="hidden lg:block lg:col-span-1"></div>
 
           {/* Get In Touch */}
-          <div className="lg:col-span-3 flex flex-col space-y-6">
+          <div dir={textDirection} className="lg:col-span-3 flex flex-col space-y-6">
             <h4 className="text-[13px] font-bold text-white tracking-widest uppercase">
               {t("sections.getInTouch")}
             </h4>
-            <div className="flex flex-col space-y-4 text-[15px] text-gray-300">
-              <a href="tel:+966112031398" className="hover:text-white transition-colors duration-300 block">
+            <div className="flex w-full flex-col items-stretch space-y-4 text-[15px] text-gray-300">
+              <a
+                href="tel:+966112031398"
+                dir="ltr"
+                className={`block w-full ${isRtl ? "text-right" : ""} hover:text-white transition-colors duration-300`}
+              >
                 +966 11 203 1398
               </a>
-              <a href="mailto:info@tmyazna.sa" className="hover:text-white transition-colors duration-300 block">
+              <a
+                href="mailto:info@tmyazna.sa"
+                dir="ltr"
+                className={`block w-full ${isRtl ? "text-right" : ""} hover:text-white transition-colors duration-300`}
+              >
                 info@tmyazna.sa
               </a>
-              <p className="leading-relaxed">
+              <p
+                dir={textDirection}
+                className={`w-full ${isRtl ? "text-right" : "text-left"} leading-relaxed`}
+              >
                 {t("contactInfo.address1")}
                 <br />
                 {t("contactInfo.address2")}
               </p>
               
               {/* Social Icons */}
-              <div className="flex items-center gap-4 pt-2">
+              <div
+                dir="ltr"
+                className={`flex w-full items-center gap-4 pt-2 ${
+                  isRtl ? "justify-end" : "justify-start"
+                }`}
+              >
                 <a
                   href="https://linkedin.com"
                   target="_blank"
@@ -164,13 +189,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Legal Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-[14px] text-gray-400 font-medium border-t border-white/5">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-center gap-6 text-[14px] text-gray-400 font-medium border-t border-white/5">
           {/* Left Side: Copyright and Legal Links */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <span className="text-gray-500">
+            <span dir={textDirection} className="text-gray-500 text-center">
               {t("legal.copyright")}
             </span>
-            <div className="flex items-center gap-4">
+            <div dir={textDirection} className="flex items-center gap-4">
               <Link href="/contact" className="hover:text-white transition-colors duration-200">
                 {t("legal.contact")}
               </Link>
@@ -181,9 +206,9 @@ export default function Footer() {
           </div>
 
           {/* Right Side: Arabic Name */}
-          <div className="text-gray-500 font-arabic tracking-wide" dir="rtl">
+          {/* <div className="text-gray-500 font-arabic tracking-wide" dir="rtl">
             {t("legal.arabicName")}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

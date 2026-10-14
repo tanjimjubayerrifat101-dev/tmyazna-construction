@@ -14,6 +14,7 @@ export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
   const otherLocale = locale === "en" ? "ar" : "en";
+  const homeScrollStorageKey = "locale-switch-home-scroll";
 
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -246,6 +247,13 @@ export default function Navbar() {
     }
   };
 
+  const preserveHomeScroll = () => {
+    if (pathname !== "/") return;
+
+    sessionStorage.setItem(homeScrollStorageKey, String(window.scrollY));
+    sessionStorage.setItem(`${homeScrollStorageKey}-locale`, otherLocale);
+  };
+
   useEffect(() => {
     if (searchOpen && searchContainerRef.current) {
       gsap.fromTo(
@@ -326,7 +334,10 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="container relative flex items-center justify-between h-20">
+      <div
+        dir="ltr"
+        className="container relative flex items-center justify-between h-20"
+      >
         {/* Brand Logo */}
         <Link
           href="/"
@@ -340,7 +351,10 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center h-full">
+        <nav
+          dir={locale === "ar" ? "rtl" : "ltr"}
+          className="hidden lg:flex items-center h-full"
+        >
           {NAV.map((item) => {
             const hasChildren = Boolean(item.groups && item.groups.length > 0);
             const isOpen = activeMenu === item.key;
@@ -481,6 +495,7 @@ export default function Navbar() {
             {searchOpen && (
               <div
                 ref={searchContainerRef}
+                dir={locale === "ar" ? "rtl" : "ltr"}
                 className="absolute end-0 top-full mt-2 w-80 sm:w-96 rounded-none bg-white p-3 shadow-2xl border border-gray-100 border-t-2 border-t-primary z-50 will-change-transform"
               >
                 <div className="flex items-center gap-2 bg-gray-50 px-3 py-2.5 border border-gray-200">
@@ -556,6 +571,9 @@ export default function Navbar() {
           <Link
             href={pathname}
             locale={otherLocale}
+            scroll={false}
+            onClick={preserveHomeScroll}
+            dir={locale === "ar" ? "rtl" : "ltr"}
             className="group relative inline-flex h-full shrink-0 items-center justify-center overflow-hidden px-3 text-sm font-semibold text-primary transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <span
@@ -618,10 +636,11 @@ export default function Navbar() {
       {/* Drawer Content */}
       <div
         ref={mobileDrawerRef}
+        dir="ltr"
         className={`fixed inset-y-0 start-0 w-[320px] sm:w-[380px] max-w-[85vw] h-full h-[100dvh] bg-white shadow-2xl z-10 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           mobileMenuOpen
             ? "translate-x-0"
-            : "-translate-x-full rtl:translate-x-full"
+            : "-translate-x-full"
         }`}
       >
         <div className="flex flex-col flex-1">
@@ -650,7 +669,10 @@ export default function Navbar() {
           </div>
 
           {/* Navigation Links inside Drawer */}
-          <div className="px-5 py-4 space-y-1">
+          <div
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            className="px-5 py-4 space-y-1"
+          >
             {NAV.map((item) => {
               const hasChildren = Boolean(
                 item.groups && item.groups.length > 0,
@@ -747,7 +769,12 @@ export default function Navbar() {
           <Link
             href={pathname}
             locale={otherLocale}
-            onClick={() => setMobileMenuOpen(false)}
+            scroll={false}
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            onClick={() => {
+              preserveHomeScroll();
+              setMobileMenuOpen(false);
+            }}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary bg-white border border-gray-200 rounded shadow-sm hover:text-secondary transition-colors"
           >
             <span>{t("switch")}</span>
