@@ -13,7 +13,12 @@ import Image from "next/image";
 import visionImage from "@/assets/service/2030-img1.png";
 
 const SERVICE_LINES: {
-  key: "construction" | "facility" | "maintenance" | "manpower" | "environmental";
+  key:
+    | "construction"
+    | "facility"
+    | "maintenance"
+    | "manpower"
+    | "environmental";
   icon: LucideIcon;
 }[] = [
   { key: "construction", icon: BuildingComplexPlus },
@@ -50,12 +55,16 @@ export default function OverviewSection() {
           </p>
         </header>
 
-        <div className="mx-auto mt-10 grid w-full gap-8 lg:mt-14 lg:w-[92%] lg:grid-cols-2 lg:gap-10">
-          <div>
-            <p className="border-s-4 border-secondary ps-5 text-base leading-8 text-gray-700 sm:text-lg">
+        <div className="mx-auto mt-10 grid w-full gap-8 lg:mt-14 lg:w-[92%] lg:grid lg:gap-10">
+          <div className="flex gap-8 lg: gap-0 flex-col lg:flex-row justify-between ">
+            <p className=" lg:w-[48%] border-s-4 border-secondary ps-5 text-base leading-8 text-gray-700 sm:text-lg">
               {t("overviewIntro")}
             </p>
 
+            <p className="lg:w-[48%] border-s-4 border-secondary ps-5 text-base leading-8 text-gray-700 sm:text-lg">
+              {t("overviewSupportingText")}
+            </p>
+            {/* 
             <div className="mt-7 rounded-2xl bg-[#F0F7FD] p-5 sm:mt-8 sm:p-8">
               <div className="flex items-start gap-4 sm:items-center sm:gap-5">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white text-secondary shadow-sm sm:h-16 sm:w-16">
@@ -92,14 +101,10 @@ export default function OverviewSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex flex-col">
-            <p className="text-base leading-8 text-gray-700 sm:text-lg">
-              {t("overviewSupportingText")}
-            </p>
-
             <div className="mt-7 flex-1 rounded-2xl bg-[#F0F7FD] p-5 sm:mt-8 sm:p-8">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -120,6 +125,25 @@ export default function OverviewSection() {
               <p className="mt-5 text-base leading-8 text-gray-700">
                 {t("visionDescription")}
               </p>
+              <div className="mt-5">
+                <ul className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 sm:gap-4">
+                  {SERVICE_LINES.map(({ key, icon: Icon }) => (
+                    <li
+                      key={key}
+                      className="flex min-h-28 flex-col items-center justify-center rounded-xl border border-blue-100 bg-white px-3 py-4 text-center transition-colors hover:border-secondary/40 hover:bg-blue-50/60"
+                    >
+                      <Icon
+                        aria-hidden="true"
+                        className="h-7 w-7 text-secondary sm:h-8 sm:w-8"
+                        strokeWidth={1.5}
+                      />
+                      <span className="mt-3 text-xs font-medium leading-5 text-gray-700 sm:text-sm">
+                        {t(`serviceLines.${key}`)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

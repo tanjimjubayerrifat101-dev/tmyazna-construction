@@ -32,10 +32,10 @@ export default function StorySection() {
 
             <FadeUp delay={0.25} y={25}>
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-secondary">
+                {/* <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-secondary">
                   <span className="h-0.5 w-6 bg-secondary" />
                   <span>{t("eyebrow")}</span>
-                </div>
+                </div> */}
                 <SlideHeadingLeft as="h3" className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
                   {t("headingPart1")}{" "}
                   <span className="text-primary dark:text-secondary">{t("companyName")}</span>{" "}

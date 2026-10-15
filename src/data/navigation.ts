@@ -22,10 +22,11 @@ export const NAV: NavItem[] = [
   {
     key: 'credentials',
     groups: [
-      // PLACEHOLDER: live site-er asol link diye replace koro
+
       { groupKey: 'quality', items: [
         { key: 'certificates', href: '/credential#certificates', icon: Award },
         { key: 'accreditations', href: '/credential#compliance', icon: ShieldCheck },
+        { key: 'vendorRegistrations', href: '/credential#vendor', icon: ShieldCheck }
       ]},
     ],
   },

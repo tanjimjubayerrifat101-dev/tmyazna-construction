@@ -43,11 +43,11 @@ export default function FlagshipProject({ isRtl = false }: FlagshipProjectProps)
             />
 
             {/* Badges on Image - status badge removed */}
-            <div className="absolute top-5 start-5 z-10">
+            {/* <div className="absolute top-5 start-5 z-10">
               <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#001833]/85 text-white backdrop-blur-md border border-white/20">
                 {project.sector}
               </span>
-            </div>
+            </div> */}
 
             {/* Location on Image Bottom */}
             <div className="absolute bottom-5 start-5 flex items-center gap-1.5 text-xs font-medium text-white/90 z-10 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">

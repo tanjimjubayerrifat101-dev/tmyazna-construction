@@ -100,10 +100,10 @@ export default function CoreValuesSection() {
               </div>
             </FadeUp>
 
-            <SlideHeadingLeft className="mb-3 text-4xl lg:text-5xl font-regular uppercase text-primary">
+            {/* <SlideHeadingLeft className="mb-3 text-4xl lg:text-5xl font-regular uppercase text-primary">
               {t("headingPart1")}{" "}
               <span className="text-secondary">{t("headingPart2")}</span>
-            </SlideHeadingLeft>
+            </SlideHeadingLeft> */}
 
             <SlideHeadingRight className="text-base sm:text-lg lg:text-xl text-muted-foreground">
               {t("subtitle")}

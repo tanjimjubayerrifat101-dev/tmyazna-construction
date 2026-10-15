@@ -143,11 +143,11 @@ export default function ProjectsFilterGrid({
               />
 
               {/* Top Sector Category Pill (Status badge removed as requested) */}
-              <div className="absolute top-3.5 start-3.5 z-10">
+              {/* <div className="absolute top-3.5 start-3.5 z-10">
                 <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-md border border-white/20 shadow-xs">
                   {project.sector}
                 </span>
-              </div>
+              </div> */}
 
               {/* Bottom Location Pin */}
               <div className="absolute bottom-3.5 start-3.5 z-10 flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white/95 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">

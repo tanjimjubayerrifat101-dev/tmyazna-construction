@@ -49,7 +49,7 @@ export default function AboutUsSection() {
             </FadeUp>
 
             {/* Checklist items */}
-            <FadeUp delay={0.3} y={25} className="mt-8">
+            {/* <FadeUp delay={0.3} y={25} className="mt-8">
               <ul className="space-y-3.5">
                 {checklistItems.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3.5 group">
@@ -62,37 +62,10 @@ export default function AboutUsSection() {
                   </li>
                 ))}
               </ul>
-            </FadeUp>
+            </FadeUp> */}
 
             {/* Signature & Founder block */}
-            <FadeUp delay={0.4} y={20} className="mt-10 pt-8 border-t border-border/70">
-              <div className="flex items-center gap-6">
-                {/* Stylized SVG signature */}
-                <div className="w-32 h-12 flex items-center justify-center text-primary/80 dark:text-white/80">
-                  <svg
-                    viewBox="0 0 160 50"
-                    fill="none"
-                    stroke="currentColor"
-                    className="w-full h-full"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M10 35 C 25 10, 45 40, 60 15 C 70 30, 85 10, 95 38 C 105 20, 120 42, 140 18" />
-                    <path d="M40 28 Q 70 34 110 25" />
-                    <circle cx="145" cy="22" r="1.5" fill="currentColor" />
-                  </svg>
-                </div>
-                <div className="border-s border-border/80 ps-5">
-                  <h4 className="text-base sm:text-lg font-bold text-foreground">
-                    {t("leaderName")}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                    {t("leaderRole")}
-                  </p>
-                </div>
-              </div>
-            </FadeUp>
+
           </div>
 
           {/* Right Column: Imagery with Floating Badge (as in Image 1) */}
@@ -114,7 +87,7 @@ export default function AboutUsSection() {
                 </div>
 
                 {/* Floating Accent Card (Bottom corner overlay matching Image 1) */}
-                <div className="absolute -bottom-6 -start-4 sm:-bottom-8 sm:-start-6 max-w-[280px] sm:max-w-[310px] rounded-2xl bg-secondary p-5 sm:p-6 text-white shadow-xl shadow-secondary/25 transition-transform duration-300 hover:-translate-y-1 group/badge cursor-pointer">
+                {/* <div className="absolute -bottom-6 -start-4 sm:-bottom-8 sm:-start-6 max-w-[280px] sm:max-w-[310px] rounded-2xl bg-secondary p-5 sm:p-6 text-white shadow-xl shadow-secondary/25 transition-transform duration-300 hover:-translate-y-1 group/badge cursor-pointer">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
                       <Award size={24} className="text-white" />
@@ -126,7 +99,7 @@ export default function AboutUsSection() {
                   <p className="text-sm sm:text-base font-semibold leading-snug">
                     {t("badgeText")}
                   </p>
-                </div>
+                </div> */}
               </div>
             </FadeUp>
           </div>

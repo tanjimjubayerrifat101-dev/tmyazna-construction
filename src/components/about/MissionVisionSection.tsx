@@ -60,7 +60,7 @@ export default function MissionVisionSection() {
 
                 <div className="mt-8 flex items-center gap-2 text-secondary text-sm font-semibold">
                   <span className="w-6 h-0.5 bg-secondary" />
-                  <span>Strategic Commitment</span>
+                  <span>{t("strategicCommitment")}</span>
                 </div>
               </div>
             </FadeUp>
@@ -113,7 +113,7 @@ export default function MissionVisionSection() {
                       {/* Bottom Tag */}
                       <div className="mt-5 pt-3 border-t border-border/50 flex items-center justify-between z-10">
                         <span className="text-[11px] uppercase tracking-wider font-bold text-primary dark:text-secondary">
-                          Core Pillar
+                          {t("corePillar")}
                         </span>
                         <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
                       </div>
@@ -136,7 +136,7 @@ export default function MissionVisionSection() {
                     <Eye size={24} />
                   </div>
                   <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-secondary">
-                    Looking Towards Tomorrow
+                    {t("lookingTowardsTomorrow")}
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4 text-white">

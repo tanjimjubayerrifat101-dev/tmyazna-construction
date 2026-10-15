@@ -11,7 +11,8 @@
       "mvv": "Mission, vision and values",
       "leadership": "Leadership",
       "certificates": "Certificates",
-      "accreditations": "Accreditations"
+      "accreditations": "Accreditations",
+      "vendorRegistrations": "Vendor Registrations & Approvals"
     },
     "search": "Search",
     "noResults": "No menu items found",
@@ -133,7 +134,8 @@
       "bicsc": "BICSc",
       "nahil": "Nahil",
       "kahatain": "Kahatain Charitable Society for Orphan Care",
-      "msajidona": "Msajidona (Association for Care of Roadside Mosques)"
+      "msajidona": "Msajidona (Association for Care of Roadside Mosques)",
+      "sap": "SAP"
     }
   },
   "Blog": {
@@ -167,8 +169,11 @@
     "sectionEyebrow": "OUR STANDARDS",
     "sectionHeading": "Certifications & Accreditations",
     "sectionHeading1": "Compliance & Licensing",
+    "venderEmptyText":"Registrations and client approvals will be listed here.",
+    "sectionHeading2": "Vendor Registrations & Approvals",    
     "viewLens": "View",
     "viewImage": "Open image",
+    "viewCertificate": "View certificate",
     "closeImage": "Close image preview",
     "openLink": "Open credential document",
     "environment": {
@@ -290,7 +295,7 @@
       "manpower": "Manpower services",
       "environmental": "Environmental services"
     },
-    "overviewSupportingText": "Our services are designed to build a sustainable future, enhance infrastructure, and support economic diversification while creating opportunities for local talent and industries. We provide an integrated portfolio of engineering, construction, and facility solutions that support Saudi Arabia's ongoing transformation under Vision 2030 — building resilient infrastructure, enhancing operational efficiency, and creating sustainable value for our clients across both public and private sectors.",
+    "overviewSupportingText": "Our services are designed to build a sustainable future, enhance infrastructure, and support economic diversification while creating opportunities for local talent and industries.",
     "visionEyebrow": "Our commitment",
     "visionHeading": "Vision 2030",
     "visionImageAlt": "Saudi Vision 2030 logo",
@@ -311,8 +316,8 @@
       "eyebrow": "ABOUT TMYAZNA",
       "headingPart1": "Leading Way In",
       "headingPart2": "Building & Civil Construction",
-      "p1": "At TMYAZNA, we deliver high-performing, customer-centric engineering and civil construction solutions. With deep experience in contracting, infrastructure, and urban development, we turn ambitious ideas into reality through unmatched precision and technical expertise.",
-      "p2": "From our earliest civil engineering projects to our leadership in large-scale modern developments, we have consistently exceeded client expectations. Our comprehensive capabilities span civil engineering, industrial construction, specialized electromechanical systems, and infrastructure.",
+      "p1": "TMYAZNA Company Limited, established in 2022, is a Saudi-based multi-disciplinary company specializing in general contracting, including mechanical, electrical, construction, water treatment, waste management, manpower supply, facility management, and operation & maintenance services. Our foundation is built on the principles of excellence, innovation, and sustainability.",
+      "p2": "TMYAZNA is a trusted partner in delivering comprehensive infrastructure and industrial solutions that drive the Kingdom’s development. Our vision extends beyond building structures; it is about building trust, empowering people, and creating sustainable value for future generations. We believe that true success is founded on integrity, quality, and a relentless pursuit of improvement.",
       "point1": "Over 22+ years of regional and international experience",
       "point2": "Fully aligned with Saudi Vision 2030 national initiatives",
       "point3": "Comprehensive civil engineering and infrastructure delivery",
@@ -325,10 +330,10 @@
       "headingPart1": "The story of how",
       "companyName": "TMYAZNA",
       "headingPart2": "was founded",
-      "p1": "Founded with a vision to redefine civil contracting across Saudi Arabia, TMYAZNA emerged from a commitment to technical precision and uncompromising quality. What began as a dedicated team of passionate engineers has grown into an industry-leading contracting powerhouse delivering landmark projects.",
+      "p1": "With a strong emphasis on quality, safety, and sustainability, we collaborate with both public and private sectors to execute projects that enhance communities, empower local talent, and drive economic diversification.",
       "modernHeadingPart1": "Pioneering Modern",
       "modernHeadingPart2": "Engineering Standards",
-      "p2": "We combine technical expertise, rigorous project management, and state-of-the-art construction technologies to deliver lasting value. Every project we undertake reflects our commitment to safety, innovation, and client success."
+      "p2": "Our approach integrates strategic planning, advanced engineering practices, and professional workforce management, ensuring that every project meets international standards and contributes meaningfully to Saudi Arabia’s long-term goals under Vision 2030."
     },
     "quoteBanner": {
       "text": "Great things in business are never done by one person.They’re done by a team of people."
@@ -339,19 +344,22 @@
       "headingPart2": "Future Landscape",
       "leaderName": "Abdulrahman Al-Tammami",
       "leaderRole": "Chairman & Chief Executive Officer",
-      "col1": "At TMYAZNA, our mission aligns with Saudi Vision 2030, the Kingdom's roadmap for a diversified and sustainable economy. We take pride in contributing to this transformation through infrastructure excellence, engineering innovation, and sustainable solutions. Our collaborations with NEOM, Red Sea Global, and Qiddiya are more than projects; they signify our commitment to trust and reliability. By utilizing modern technologies and local expertise, we create a future where efficiency meets sustainability.",
-      "col2": "Looking forward, our strategy emphasizes technological advancement, sustainable growth, and operational excellence. We are committed to smart systems and environmentally responsible practices, aligning with the Saudi Green Initiatives and supporting the goals of Vision 2030.As the CEO of TMYAZNA Limited Company, I am grateful to our clients, partners, and employees for their unwavering support."
+      "col1": "At TMYAZNA, our mission aligns with Saudi Vision 2030, the Kingdom's roadmap for a diversified and sustainable economy. We take pride in contributing to this transformation through infrastructure excellence, engineering innovation, and sustainable solutions. \n\n Our collaborations with NEOM, Red Sea Global, and Qiddiya are more than projects; they signify our commitment to trust and reliability. By utilizing modern technologies and local expertise, we create a future where efficiency meets sustainability.",
+      "col2": "Looking forward, our strategy emphasizes technological advancement, sustainable growth, and operational excellence. We are committed to smart systems and environmentally responsible practices, aligning with the Saudi Green Initiatives and supporting the goals of Vision 2030.\n\n As the CEO of TMYAZNA Limited Company, I am grateful to our clients, partners, and employees for their unwavering support."
     },
     "missionVision": {
       "missionTitle": "Our Mission",
       "missionDesc": "Our mission is to deliver reliable, high-quality, efficient and sustainable solutions across construction, systems integration and facility services. We strive to exceed client expectations through innovation, operational excellence and a strong commitment to safety and environmental responsibility.",
+      "strategicCommitment": "Strategic Commitment",
       "dedicatedHeading": "We Are Dedicated To",
+      "corePillar": "Core Pillar",
       "d1Title": "Engineering Excellence",
       "d1Desc": "Driving economic diversification and local empowerment by supporting Saudi Vision 2030.",
       "d2Title": "Sustainable Innovation",
       "d2Desc": "Delivering smart, eco-friendly, reliable and cost-effective solutions in engineering and maintenance.",
       "d3Title": "Client Partnership",
       "d3Desc": "Ensuring the highest quality in all services, committed to excellence and client satisfaction.",
+      "lookingTowardsTomorrow": "Looking Towards Tomorrow",
       "visionTitle": "Our Vision",
       "visionDesc": "“To be the leader of innovative and sustainable solutions that empower communities and drive the development of a modern Kingdom.”"
     },

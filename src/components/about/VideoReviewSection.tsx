@@ -25,9 +25,9 @@ export default function VideoReviewSection() {
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Block: Video Thumbnail with Play Button */}
-          <div className="lg:col-span-7 flex">
+          <div className="lg:col-span-12 flex">
             <FadeUp delay={0.1} y={30} className="w-full h-full">
-              <div className="group relative h-full min-h-[360px] sm:min-h-[420px] w-full overflow-hidden rounded-2xl border border-border/70 shadow-xl isolate flex flex-col justify-end p-8 sm:p-10">
+              <div className="group relative h-full min-h-[360px] sm:min-h-[520px] w-full overflow-hidden rounded-2xl border border-border/70 shadow-xl isolate flex flex-col justify-end p-8 sm:p-10">
                 <Image
                   src={videoPoster}
                   alt={t("videoHeading")}
@@ -75,7 +75,7 @@ export default function VideoReviewSection() {
           </div>
 
           {/* Right Block: Customer Reviews Card (Image 1 style) */}
-          <div className="lg:col-span-5 flex">
+          {/* <div className="lg:col-span-5 flex">
             <FadeUp delay={0.2} y={30} className="w-full h-full">
               <div className="relative flex flex-col justify-between h-full rounded-2xl border border-border/70 bg-card p-8 sm:p-10 shadow-xl">
                 <div>
@@ -105,7 +105,7 @@ export default function VideoReviewSection() {
                   </div>
                 </div>
 
-                {/* Reviewer signature info */}
+                
                 <div className="mt-8 pt-6 border-t border-border/60 flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary text-white font-bold text-lg shadow-md">
                     FA
@@ -121,7 +121,7 @@ export default function VideoReviewSection() {
                 </div>
               </div>
             </FadeUp>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Partner Logos Ribbon (as in Image 1) */}

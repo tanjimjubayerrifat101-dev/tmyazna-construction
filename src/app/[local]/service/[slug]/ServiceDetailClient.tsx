@@ -6,9 +6,8 @@ import {
   getLocalizedService,
   SERVICES_DATA,
 } from "@/data/servicesData";
-import SystemsIntegrationTabs from "@/components/service/details/SystemsIntegrationTabs";
+import ServiceAreaTabs from "@/components/service/details/ServiceAreaTabs";
 import StandardServiceDetail from "@/components/service/details/StandardServiceDetail";
-import ServiceCatalog from "@/components/service/details/ServiceCatalog";
 import ServiceCTA from "@/components/service/details/ServiceCTA";
 
 interface ServiceDetailClientProps {
@@ -23,8 +22,6 @@ export default function ServiceDetailClient({
   const sourceService = SERVICES_DATA.find((s) => s.slug === slug);
   if (!sourceService) return null;
   const service = getLocalizedService(sourceService, isRtl);
-
-  const isSystemsIntegration = service.slug === "systems-integration" && !!service.subDisciplines;
 
   return (
     <div className="py-12 sm:py-16 lg:py-24 bg-[#f8fbff]" dir={isRtl ? "rtl" : "ltr"}>
@@ -50,10 +47,15 @@ export default function ServiceDetailClient({
           </Link>
         </div>
 
-        {/* Systems Integration has 6 sub-tabs; other services render standard detailed layout */}
-        {isSystemsIntegration && service.subDisciplines ? (
-          <SystemsIntegrationTabs
+        {service.subDisciplines && service.subDisciplines.length > 0 ? (
+          <ServiceAreaTabs
             subDisciplines={service.subDisciplines}
+            tabHeading={
+              service.tabHeading ??
+              (isRtl ? "مجالات الخدمة" : "Service Areas")
+            }
+            catalogHeading={service.catalogHeading || "Catalog"}
+            catalogItems={service.catalogItems}
             isRtl={isRtl}
           />
         ) : (
@@ -62,13 +64,6 @@ export default function ServiceDetailClient({
             isRtl={isRtl}
           />
         )}
-
-        {/* Catalog Section for all services */}
-        <ServiceCatalog
-          heading={service.catalogHeading || "Catalog"}
-          items={service.catalogItems}
-          isRtl={isRtl}
-        />
 
         {/* Bottom CTA Banner */}
         <ServiceCTA serviceName={service.name} isRtl={isRtl} />

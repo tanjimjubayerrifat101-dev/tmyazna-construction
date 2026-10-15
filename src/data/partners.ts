@@ -19,6 +19,7 @@ import saudiMetersLogo from "@/assets/partner/smc-footer-logo.svg"
 import shapoorjiLogo from "@/assets/partner/icon_splogo_blue.svg"
 import muheelLogo from "@/assets/partner/muheel1.png"
 import rttLogo from "@/assets/partner/rtt.webp"
+import sapLogo from "@/assets/partner/sap-logo-svg.svg"
 
 export interface Partner {
   id: string;
@@ -107,6 +108,7 @@ export const PARTNER_CATEGORIES: PartnerCategory[] = [
     titleKey: "technologyDigitalSolutions",
     partners: [
       { id: "nahil", nameKey: "nahil", initials: "NH", logo: nahilLogo, href: "https://nahil.com.sa/ar/" },
+      { id: "sap", nameKey: "sap", initials: "SP", logo: sapLogo, href: "https://www.sap.com/mena/index.html" },
     ],
   },
   {

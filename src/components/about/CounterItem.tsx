@@ -85,8 +85,7 @@ export default function CounterItem({
     };
   }, [isStarted, value, duration]);
 
-  // Format count with commas (e.g. 1,200)
-  const formattedCount = (Number.isFinite(count) ? count : 0).toLocaleString();
+  const formattedCount = String(Number.isFinite(count) ? count : 0);
 
   return (
     <div
@@ -115,4 +114,3 @@ export default function CounterItem({
     </div>
   );
 }
-

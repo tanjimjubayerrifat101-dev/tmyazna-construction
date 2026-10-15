@@ -99,7 +99,7 @@
 
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -130,10 +130,13 @@ body {
 
 .nav-rolling-text-wrap {
   position: relative;
-  display: block;
+  display: inline-block;
+  width: max-content;
+  flex: 0 0 auto;
   overflow: hidden;
   height: 24px;
   line-height: 24px;
+  white-space: nowrap;
 }
 
 .nav-rolling-text-wrap .nav-text-item {
@@ -145,17 +148,19 @@ body {
 .nav-rolling-text-wrap .nav-text-duplicate {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   transform: translateY(-100%);
   color: var(--dark-blue);
+  white-space: nowrap;
 }
 
-.group:hover .nav-rolling-text-wrap .nav-text-primary {
+.group:hover .nav-rolling-text-wrap .nav-text-primary,
+.group:focus-visible .nav-rolling-text-wrap .nav-text-primary {
   transform: translateY(100%);
 }
 
-.group:hover .nav-rolling-text-wrap .nav-text-duplicate {
+.group:hover .nav-rolling-text-wrap .nav-text-duplicate,
+.group:focus-visible .nav-rolling-text-wrap .nav-text-duplicate {
   transform: translateY(0%);
 }
 

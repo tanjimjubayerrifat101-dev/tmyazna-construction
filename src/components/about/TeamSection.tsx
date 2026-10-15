@@ -80,11 +80,11 @@ export default function TeamSection() {
               <span className="h-[2px] w-6 bg-secondary" />
             </div>
           </FadeUp>
-
+{/* 
           <SlideHeadingLeft className="mb-3 text-4xl lg:text-5xl font-regular uppercase text-primary">
             {t("headingPart1")}{" "}
             <span className="text-secondary">{t("headingPart2")}</span>
-          </SlideHeadingLeft>
+          </SlideHeadingLeft> */}
         </div>
 
         {/* ── MOBILE / TABLET → Swiper slider (hidden on lg+) ── */}

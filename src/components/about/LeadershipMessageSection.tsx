@@ -6,6 +6,7 @@ import { ShieldCheck, Award } from "lucide-react";
 import FadeUp from "@/utils/FadeUp";
 import SlideHeadingLeft from "@/utils/SlideHeading";
 import leaderImg from "@/assets/about/ceo.png";
+import QuoteBannerAboutSection from "./QuoteBannerAboutSection";
 
 export default function LeadershipMessageSection() {
   const t = useTranslations("AboutPage.leadership");
@@ -17,7 +18,7 @@ export default function LeadershipMessageSection() {
           {/* Left Column: Portrait Card */}
           <div className="lg:col-span-4">
             <FadeUp delay={0.15} y={30}>
-              <div className="group relative mx-auto max-w-sm rounded-2xl border border-border/70 bg-card p-4 shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div className="group relative mx-auto max-w-sm rounded-2xl border border-border/70 bg-card shadow-xl transition-all duration-300 hover:shadow-2xl">
                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-muted">
                   <Image
                     src={leaderImg}
@@ -27,15 +28,9 @@ export default function LeadershipMessageSection() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-                  {/* Badge in corner */}
-                  <div className="absolute top-3 end-3 flex items-center gap-1.5 rounded-lg bg-primary/80 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-white shadow-md">
-                    <ShieldCheck size={14} className="text-secondary" />
-                    <span>Vision 2030 Partner</span>
-                  </div>
                 </div>
 
-                <div className="mt-5 text-center">
+                <div className="mt-5 p-4 text-center">
                   <h3 className="text-xl font-bold text-foreground">
                     {t("leaderName")}
                   </h3>
@@ -55,21 +50,24 @@ export default function LeadershipMessageSection() {
                 <span>{t("eyebrow")}</span>
               </div>
             </FadeUp>
-
+{/* 
             <SlideHeadingLeft className="mb-8 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[115%]">
               {t("headingPart1")}{" "}
               <span className="text-primary dark:text-secondary">
                 {t("headingPart2")}
               </span>
+            </SlideHeadingLeft> */}
+            <SlideHeadingLeft>
+              <QuoteBannerAboutSection/>
             </SlideHeadingLeft>
 
             <FadeUp delay={0.25} y={25}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base text-muted-foreground leading-relaxed">
                 <div className="rounded-xl border border-border/50 bg-muted/20 p-6">
-                  <p>{t("col1")}</p>
+                  <p className="whitespace-pre-line">{t("col1")}</p>
                 </div>
                 <div className="rounded-xl border border-border/50 bg-muted/20 p-6">
-                  <p>{t("col2")}</p>
+                  <p className="whitespace-pre-line">{t("col2")}</p>
                 </div>
               </div>
             </FadeUp>

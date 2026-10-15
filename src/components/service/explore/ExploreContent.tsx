@@ -28,10 +28,10 @@ export default function ExploreContent({ service }: ExploreContentProps) {
       className="flex flex-col justify-center animate-fadeIn"
     >
       {/* Index Counter */}
-      <div className="flex items-center gap-2 mb-4 text-sm font-bold tracking-widest text-secondary">
+      {/* <div className="flex items-center gap-2 mb-4 text-sm font-bold tracking-widest text-secondary">
         <span className="w-8 h-[2px] bg-secondary" />
         <span>{localizedService.number}</span>
-      </div>
+      </div> */}
 
       {/* Main Heading with Accent Text */}
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#001833] leading-[115%] mb-6">

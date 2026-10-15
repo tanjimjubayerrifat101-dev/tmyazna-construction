@@ -12,8 +12,10 @@ export interface CredentialFeatureProps {
   subtitle: string;
   description: string;
   image: StaticImageData | string;
+  imageLink?: StaticImageData | string;
   imageAlt: string;
   link?: string;
+  viewCertificateLabel: string;
   lensLabel: string;
   viewImageLabel: string;
   closeImageLabel: string;
@@ -26,8 +28,10 @@ function CredentialFeature({
   subtitle,
   description,
   image,
+  imageLink,
   imageAlt,
   link,
+  viewCertificateLabel,
   lensLabel,
   viewImageLabel,
   closeImageLabel,
@@ -88,6 +92,17 @@ function CredentialFeature({
             <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
               {description}
             </p>
+            {imageLink && (
+              <a
+                href={typeof imageLink === "string" ? imageLink : imageLink.src}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary underline decoration-secondary underline-offset-4 transition-colors hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+              >
+                {viewCertificateLabel}
+                <ExternalLink size={15} aria-hidden="true" />
+              </a>
+            )}
           </div>
 
           <button

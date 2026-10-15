@@ -60,6 +60,7 @@ export interface ServiceItemData {
   image: StaticImageData;
   icon: LucideIcon;
   subDisciplines?: SubDiscipline[];
+  tabHeading?: string;
   coreCapabilitiesHeading?: string;
   coreDescription?:string;
   coreCapabilities?: string[];
@@ -90,6 +91,7 @@ interface ArabicServiceContent {
   coreDescription?: string;
   coreCapabilities?: string[];
   catalogHeading: string;
+  tabHeading?: string;
   subDisciplines?: Record<string, ArabicSubDiscipline>;
   catalogItems: Record<string, ArabicCatalogItem>;
 }
@@ -106,6 +108,7 @@ export const SERVICES_DATA: ServiceItemData[] = [
     description:
       "We unify a building's electrical, mechanical, plumbing, fire & life safety, HVAC and ICT systems into one intelligent, measurable network — engineered for reliability, efficiency and long-term performance across six integrated disciplines.",
     image: service1Img,
+    tabHeading: "Integrated Disciplines",
     subDisciplines: [
       {
         id: "electrical",
@@ -279,6 +282,47 @@ export const SERVICES_DATA: ServiceItemData[] = [
     description:
       "We deliver civil, structural and building works to programme, budget and the highest quality and safety standards — managing every stage from groundworks and structures through fit-out to testing, commissioning and handover.",
     image: service2Img,
+    tabHeading: "Construction Services",
+    subDisciplines: [
+      {
+        id: "civil-works",
+        tabTitle: "Civil Works",
+        heading: "Our Civil Work Expertise",
+        description:
+          "At TMYAZNA Company Limited, we provide the structural integrity and foundational excellence every great project requires. Our team manages civil works with precision, durability, and seamless coordination with MEP services. Through modern construction methods and rigorous site management, we deliver high-quality infrastructure that provides a reliable base for complex technical installations.",
+        capabilitiesHeading: "Core Civil Work Capabilities",
+        capabilities: [
+          "Structural Concrete Works",
+          "Earthworks & Site Preparation",
+          "Masonry & Blockwork",
+          "Waterproofing Systems",
+          "External Works & Hardscaping",
+          "Structural Steel Integration",
+          "Underground Utility Infrastructure",
+          "Internal Plastering & Screeding",
+          "Expansion Joint Management",
+          "Demolition & Structural Alterations",
+        ],
+        icon: Building2,
+      },
+      {
+        id: "interior-fit-out",
+        tabTitle: "Interior Fit-Out",
+        heading: "Our Interior Fit-Out Expertise",
+        description:
+          "We transform empty shells into functional, high-end environments. Our approach combines design and engineering so the finished space reflects the client’s vision and works seamlessly with the building’s technical systems. From acoustic performance to premium materials, we deliver turnkey fit-outs integrated with HVAC, electrical, and ICT infrastructure.",
+        capabilitiesHeading: "Core Fit-Out Capabilities",
+        capabilities: [
+          "Gypsum & Ceiling Systems",
+          "Specialized Flooring Solutions",
+          "Joinery & Custom Millwork",
+          "Glass & Aluminum",
+          "Painting & Finishing Work",
+          "Exterior Glazed Cladding Systems",
+        ],
+        icon: Wrench,
+      },
+    ],
     coreCapabilitiesHeading: "Our Civil Work Expertise",
     coreDescription:"At Tmyazna Company Limited, we provide the structural integrity and foundational excellence that every great project requires. Tmyazna team manages civil works with a focus on precision, durability, and seamless coordination with MEP services. We understand that civil work is the skeleton of the facility; therefore, our team ensures that every structural element is executed to the highest engineering standards. By integrating modern construction methodologies with rigorous site management, Tmyazna team delivers high-quality infrastructure that serves as a reliable base for the most complex technological installations.",
     coreCapabilities: [
@@ -340,6 +384,64 @@ export const SERVICES_DATA: ServiceItemData[] = [
     description:
       "We provide end-to-end hard and soft facility management that keeps assets running reliably and cost-effectively across their entire lifecycle — backed by CAFM technology and trained, certified teams.",
     image: service3Img,
+    tabHeading: "Facility Service Lines",
+    subDisciplines: [
+      {
+        id: "facility-management",
+        tabTitle: "Facility Management",
+        heading: "Our Facility Management Expertise",
+        description:
+          "We deliver integrated facility management that extends beyond hospitality and basic maintenance. Using data from connected systems, our teams provide proactive, technology-driven operations that reduce downtime and cost while keeping occupants safe and comfortable.",
+        capabilitiesHeading: "Core Facility Management Capabilities",
+        capabilities: [
+          "CAFM System Integration",
+          "Hard FM (Mechanical & Electrical) Maintenance",
+          "Soft FM (Cleaning & Housekeeping)",
+          "Security & Access Management",
+          "Energy Management & Auditing",
+          "Preventive & Predictive Maintenance",
+          "Landscaping & Irrigation Maintenance",
+          "EHS (Environment, Health & Safety)",
+        ],
+        icon: Settings,
+      },
+      {
+        id: "janitorial",
+        tabTitle: "Janitorial Services",
+        heading: "Our Janitorial Services Expertise",
+        description:
+          "We treat cleanliness as an essential part of facility health and asset preservation. Our trained teams use eco-friendly methods and carefully planned schedules to maintain hygienic, professional spaces without disrupting daily operations, from premium finishes to sensitive technical areas.",
+        capabilitiesHeading: "Core Janitorial Services Capabilities",
+        capabilities: [
+          "High-End Surface Care",
+          "Sanitization & Infection Control",
+          "Dust-Free Janitorial Protocols",
+          "Waste Management & Segregation",
+          "Deep Cleaning & Steam Treatment",
+          "Façade & External Cleaning",
+        ],
+        icon: Users,
+      },
+      {
+        id: "operation-maintenance",
+        tabTitle: "Operation & Maintenance",
+        heading: "Our Operation & Maintenance Expertise",
+        description:
+          "We support daily operational continuity with technical operation and maintenance services for a building’s core systems. Combining hands-on engineering skills with integrated monitoring, we maintain mechanical and electrical assets for reliable, safe, and efficient operation, maximum uptime, and energy sustainability.",
+        capabilitiesHeading: "Core Operation & Maintenance Capabilities",
+        capabilities: [
+          "System-Specific Preventive Maintenance",
+          "Predictive Diagnostics",
+          "Energy Optimization",
+          "Critical Spare Parts Management",
+          "Full-Time On-Site Technical Teams",
+          "Water & Air Quality Testing",
+          "Corrective & Emergency Repairs",
+          "Lifecycle Asset Mapping",
+        ],
+        icon: Wrench,
+      },
+    ],
     coreCapabilitiesHeading: "Core Facility Management Capabilities",
     coreDescription:"At Tmyazna Company Limited, we believe that a building is a high-performance asset that requires expert care to retain its value. Tmyazna team delivers integrated Facility Management solutions that go beyond hospitality services and basic maintenance; we focus on operational excellence and lifecycle optimization. By leveraging the data from our integrated systems, our team provides proactive, technology-driven management that reduces downtime and minimizes operational costs. Whether managing a high-traffic mall or a sensitive data center, Tmyazna team ensures a safe, efficient, and comfortable environment for all occupants through a unified management approach.",
     coreCapabilities: [
@@ -399,6 +501,39 @@ export const SERVICES_DATA: ServiceItemData[] = [
     description:
       "We supply skilled, certified people — mobilised quickly and managed to international standards across every discipline and trade, with full recruitment, training, Saudization and compliance support.",
     image: service4Img,
+    tabHeading: "Workforce Categories",
+    subDisciplines: [
+      {
+        id: "technical-workforce",
+        tabTitle: "Technical Workforce",
+        heading: "Engineering & Technical Professionals",
+        description:
+          "We provide certified, project-ready engineering and technical professionals for demanding infrastructure and systems integration projects. Our specialists are mobilized to meet project requirements and work to the safety and quality standards expected across the Kingdom’s landmark developments.",
+        capabilitiesHeading: "Engineering & Technical Capabilities",
+        capabilities: [
+          "Engineering & Technical Professionals",
+          "Specialized HVAC & MEP Technicians",
+          "Skilled Civil & Construction Trades",
+          "Industrial Operators & Fabricators",
+          "Finishing & Fit-Out Artisans",
+        ],
+        icon: Wrench,
+      },
+      {
+        id: "operations-support",
+        tabTitle: "Operations & Site Support",
+        heading: "Operation, Maintenance & Site Support Teams",
+        description:
+          "We supply dependable teams to keep facilities and project sites operating smoothly. From operation and maintenance to professional cleaning and site logistics, our personnel are prepared to support daily operations in line with required safety, quality, and compliance standards.",
+        capabilitiesHeading: "Operations & Site Support Capabilities",
+        capabilities: [
+          "Operation & Maintenance (O&M) Teams",
+          "Professional Janitorial & Hygiene Staff",
+          "Site Logistics & General Support",
+        ],
+        icon: Settings,
+      },
+    ],
     coreCapabilitiesHeading: "Core Manpower & Technical Staffing Capabilities",
     coreDescription:"At Tmyazna Company Limited, we provide a tiered human capital solution designed to meet the rigorous demands of large-scale infrastructure and systems integration. Tmyazna team understands that project success requires a balanced workforce, from high- level engineering specialists to dependable site support. We bridge the gap between technical demand and talent supply by providing certified, project-ready professionals across three specialized categories. By choosing Tmyazna team, you ensure that your project is powered by a workforce that is not only technically capable but also fully integrated into the safety and quality standards required for Saudi Arabia’s landmark developments.",
     coreCapabilities: [
@@ -459,6 +594,51 @@ export const SERVICES_DATA: ServiceItemData[] = [
     description:
       "We deliver water, waste and sustainability solutions that protect the environment and support the Kingdom’s net-zero ambitions — from treatment plants to recycling, compliance and emissions monitoring.",
     image: service5Img,
+    tabHeading: "Environmental Services",
+    subDisciplines: [
+      {
+        id: "water-treatment",
+        tabTitle: "Water Treatment",
+        heading: "Our Water Treatment Expertise",
+        description:
+          "We protect facility water systems through specialist chemical and mechanical treatment. Covering the full water cycle—from potable-water purification to wastewater recycling for irrigation—our smart monitoring and treatment protocols help maintain hygiene, protect infrastructure, and reduce environmental impact.",
+        capabilitiesHeading: "Core Water Treatment Capabilities",
+        capabilities: [
+          "Potable Water Purification",
+          "Cooling Tower Water Treatment",
+          "Greywater Recycling Systems",
+          "Reverse Osmosis (RO) Plant Integration",
+          "Sewage Treatment Plant (STP) Management",
+          "Swimming Pool & Water Feature Filtration",
+          "Boiler & Heating Loop Treatment",
+          "Automated Water Quality Analysis",
+          "Scale & Corrosion Inhibition",
+          "Sustainable Drainage Systems (SuDS)",
+        ],
+        icon: Droplets,
+      },
+      {
+        id: "waste-management",
+        tabTitle: "Waste Management",
+        heading: "Our Waste Management & Environmental Services Expertise",
+        description:
+          "We turn waste management into a sustainability function through integrated solutions that support environmental and hygiene standards. Smart tracking, sorting, and recovery help move facilities beyond traditional disposal towards circular-economy practices while reducing their environmental footprint.",
+        capabilitiesHeading: "Core Waste Management Capabilities",
+        capabilities: [
+          "Smart Bin & Sensor Integration",
+          "Source Segregation Systems",
+          "Organic Waste Composting",
+          "Hazardous & Medical Waste Protocols",
+          "BMS-Linked Waste Tracking",
+          "Pneumatic Waste Collection Support",
+          "Construction & Demolition (C&D) Diversion",
+          "E-Waste Recycling Programs",
+          "Grease Trap & Oil Management",
+          "Zero-Waste Strategy Consulting",
+        ],
+        icon: Leaf,
+      },
+    ],
     coreCapabilitiesHeading: "Core Water Treatment & Integration Capabilities",
     coreCapabilities: [
       "Potable Water Purification",
@@ -517,6 +697,7 @@ const SERVICES_ARABIC: Record<string, ArabicServiceContent> = {
     heading: "خبرتنا في تكامل الأنظمة",
     description:
       "نوحّد الأنظمة الكهربائية والميكانيكية وأنظمة السباكة ومكافحة الحريق وسلامة الأرواح والتكييف وتقنية المعلومات والاتصالات في المباني ضمن شبكة ذكية قابلة للقياس، مصممة لتحقيق الاعتمادية والكفاءة والأداء طويل الأمد عبر ستة تخصصات متكاملة.",
+    tabHeading: "التخصصات المتكاملة",
     catalogHeading: "كتالوج تكامل الأنظمة",
     subDisciplines: {
       electrical: {
@@ -665,6 +846,43 @@ const SERVICES_ARABIC: Record<string, ArabicServiceContent> = {
     heading: "خبرتنا في الإنشاءات",
     description:
       "ننفذ الأعمال المدنية والإنشائية وأعمال المباني وفق الجداول والميزانيات وأعلى معايير الجودة والسلامة، وندير جميع المراحل من تجهيز الموقع والهياكل إلى التشطيبات والاختبارات والتشغيل والتسليم.",
+    tabHeading: "خدمات الإنشاءات",
+    subDisciplines: {
+      "civil-works": {
+        tabTitle: "الأعمال المدنية",
+        heading: "خبرتنا في الأعمال المدنية",
+        description:
+          "في شركة تميزنا المحدودة، نوفر المتانة الإنشائية والأسس الراسخة التي يحتاج إليها كل مشروع ناجح. يدير فريقنا الأعمال المدنية بدقة واهتمام بالمتانة والتنسيق السلس مع خدمات الأنظمة الكهروميكانيكية. ومن خلال أساليب البناء الحديثة والإدارة الدقيقة للمواقع، ننفذ بنية تحتية عالية الجودة تشكل أساساً موثوقاً للتركيبات التقنية المعقدة.",
+        capabilitiesHeading: "قدرات الأعمال المدنية الأساسية",
+        capabilities: [
+          "أعمال الخرسانة الإنشائية",
+          "الأعمال الترابية وتجهيز الموقع",
+          "أعمال المباني والبلوك",
+          "أنظمة العزل المائي",
+          "الأعمال الخارجية وتنسيق المساحات",
+          "تكامل الهياكل الفولاذية",
+          "البنية التحتية للمرافق تحت الأرض",
+          "اللياسة الداخلية وتسوية الأرضيات",
+          "إدارة فواصل التمدد",
+          "الهدم والتعديلات الإنشائية",
+        ],
+      },
+      "interior-fit-out": {
+        tabTitle: "التجهيز الداخلي",
+        heading: "خبرتنا في التجهيز الداخلي",
+        description:
+          "نحوّل الهياكل الفارغة إلى بيئات عملية راقية. ونجمع في أعمال التجهيز الداخلي بين التصميم والهندسة لضمان توافق المساحة النهائية مع رؤية العميل وانسجامها مع الأنظمة الفنية للمبنى. ومن الأداء الصوتي إلى المواد عالية الجودة، نقدم حلولاً متكاملة ترتبط بأنظمة التكييف والكهرباء وتقنية المعلومات والاتصالات.",
+        capabilitiesHeading: "قدرات التجهيز الداخلي الأساسية",
+        capabilities: [
+          "أنظمة الجبس والأسقف",
+          "حلول الأرضيات المتخصصة",
+          "أعمال النجارة والتصنيع حسب الطلب",
+          "الزجاج والألمنيوم",
+          "أعمال الطلاء والتشطيب",
+          "أنظمة تكسية الواجهات الزجاجية",
+        ],
+      },
+    },
     coreCapabilitiesHeading: "خبرتنا في الأعمال المدنية",
     coreDescription:
       "في شركة تميزنا المحدودة، نوفر المتانة الإنشائية والأسس الراسخة التي يحتاج إليها كل مشروع ناجح. يدير فريقنا الأعمال المدنية بدقة واهتمام بالمتانة والتنسيق السلس مع خدمات الأنظمة الكهروميكانيكية. ونؤمن بأن الأعمال المدنية تشكل الهيكل الأساسي للمنشأة؛ لذلك نحرص على تنفيذ كل عنصر إنشائي وفق أعلى المعايير الهندسية. ومن خلال توظيف أساليب البناء الحديثة والإدارة الدقيقة للمواقع، ننفذ بنية تحتية عالية الجودة تشكل أساساً موثوقاً لأعقد التركيبات التقنية.",
@@ -714,6 +932,58 @@ const SERVICES_ARABIC: Record<string, ArabicServiceContent> = {
     heading: "خبرتنا في إدارة المرافق",
     description:
       "نقدم إدارة متكاملة للمرافق تشمل الخدمات الفنية وغير الفنية، بما يحافظ على موثوقية الأصول وكفاءة تكلفتها طوال دورة حياتها، بدعم من تقنيات إدارة المرافق المحوسبة وفرق مدربة ومعتمدة.",
+    tabHeading: "مجالات خدمات المرافق",
+    subDisciplines: {
+      "facility-management": {
+        tabTitle: "إدارة المرافق",
+        heading: "خبرتنا في إدارة المرافق",
+        description:
+          "نقدم حلولاً متكاملة لإدارة المرافق تتجاوز خدمات الضيافة والصيانة الأساسية. وبالاستفادة من بيانات الأنظمة المتصلة، نوفر عمليات استباقية قائمة على التقنية تقلل فترات التوقف والتكاليف، وتحافظ على سلامة شاغلي المنشآت وراحتهم.",
+        capabilitiesHeading: "قدرات إدارة المرافق الأساسية",
+        capabilities: [
+          "تكامل أنظمة إدارة المرافق المحوسبة (CAFM)",
+          "صيانة المرافق الفنية (الميكانيكية والكهربائية)",
+          "خدمات المرافق غير الفنية (النظافة والتدبير)",
+          "إدارة الأمن والتحكم بالدخول",
+          "إدارة الطاقة والتدقيق",
+          "الصيانة الوقائية والتنبؤية",
+          "صيانة المسطحات الخضراء وشبكات الري",
+          "البيئة والصحة والسلامة (EHS)",
+        ],
+      },
+      janitorial: {
+        tabTitle: "خدمات النظافة",
+        heading: "خبرتنا في خدمات النظافة",
+        description:
+          "نعدّ النظافة جزءاً أساسياً من صحة المرافق والحفاظ على الأصول. وتستخدم فرقنا المدربة أساليب صديقة للبيئة وجداول مدروسة للحفاظ على مساحات صحية ومهنية دون تعطيل سير العمل اليومي، بدءاً من التشطيبات الراقية وصولاً إلى المساحات الفنية الحساسة.",
+        capabilitiesHeading: "قدرات خدمات النظافة الأساسية",
+        capabilities: [
+          "العناية بالأسطح عالية الجودة",
+          "التعقيم ومكافحة العدوى",
+          "بروتوكولات النظافة الخالية من الغبار",
+          "إدارة النفايات وفرزها",
+          "التنظيف العميق والمعالجة بالبخار",
+          "تنظيف الواجهات والمساحات الخارجية",
+        ],
+      },
+      "operation-maintenance": {
+        tabTitle: "التشغيل والصيانة",
+        heading: "خبرتنا في التشغيل والصيانة",
+        description:
+          "ندعم استمرارية التشغيل اليومية من خلال خدمات فنية لتشغيل وصيانة الأنظمة الأساسية في المباني. ونجمع بين الخبرة الهندسية العملية والمراقبة المتكاملة للحفاظ على الأصول الميكانيكية والكهربائية وضمان موثوقية التشغيل وسلامته وكفاءته واستدامة الطاقة.",
+        capabilitiesHeading: "قدرات التشغيل والصيانة الأساسية",
+        capabilities: [
+          "الصيانة الوقائية حسب نوع النظام",
+          "التشخيص التنبؤي",
+          "تحسين كفاءة الطاقة",
+          "إدارة قطع الغيار الحيوية",
+          "فرق فنية متواجدة في الموقع بدوام كامل",
+          "اختبارات جودة المياه والهواء",
+          "الإصلاحات التصحيحية والطارئة",
+          "رسم خرائط الأصول طوال دورة حياتها",
+        ],
+      },
+    },
     coreCapabilitiesHeading: "قدرات إدارة المرافق الأساسية",
     coreDescription:
       "في شركة تميزنا المحدودة، نؤمن بأن المبنى أصل عالي الأداء يحتاج إلى عناية متخصصة للحفاظ على قيمته. يقدم فريقنا حلولاً متكاملة لإدارة المرافق تتجاوز خدمات الضيافة والصيانة الأساسية، وتركز على التميز التشغيلي وتحسين دورة حياة الأصول. وبالاستفادة من بيانات الأنظمة المتكاملة، نوفر إدارة استباقية قائمة على التقنية تقلل فترات التوقف وتكاليف التشغيل. سواء أدرنا مركزاً تجارياً كثيف الحركة أو مركز بيانات حساساً، نعمل على توفير بيئة آمنة وفعالة ومريحة لجميع شاغلي المنشأة من خلال نهج موحد في الإدارة.",
@@ -761,6 +1031,35 @@ const SERVICES_ARABIC: Record<string, ArabicServiceContent> = {
     heading: "خبرتنا في خدمات القوى العاملة",
     description:
       "نوفر كوادر ماهرة ومعتمدة، ونعبئها بسرعة ونديرها وفق المعايير الدولية في مختلف التخصصات والمهن، مع دعم متكامل للتوظيف والتدريب والتوطين والامتثال.",
+    tabHeading: "فئات القوى العاملة",
+    subDisciplines: {
+      "technical-workforce": {
+        tabTitle: "الكوادر الفنية",
+        heading: "المهندسون والمتخصصون الفنيون",
+        description:
+          "نوفر مهندسين ومتخصصين فنيين معتمدين وجاهزين للعمل في مشاريع البنية التحتية وتكامل الأنظمة ذات المتطلبات العالية. ونعبئ الكفاءات وفق احتياجات المشروع، مع الالتزام بمعايير السلامة والجودة المطلوبة في المشاريع الكبرى بالمملكة.",
+        capabilitiesHeading: "قدرات الكوادر الهندسية والفنية",
+        capabilities: [
+          "المهندسون والمتخصصون الفنيون",
+          "فنيو التكييف والأنظمة الكهروميكانيكية",
+          "الحرفيون المهرة في الأعمال المدنية والإنشاءات",
+          "مشغلو المعدات الصناعية وأعمال التصنيع",
+          "حرفيو التشطيبات والتجهيز الداخلي",
+        ],
+      },
+      "operations-support": {
+        tabTitle: "التشغيل والدعم الميداني",
+        heading: "فرق التشغيل والصيانة والدعم الميداني",
+        description:
+          "نوفر فرقاً موثوقة لدعم استمرارية تشغيل المرافق ومواقع المشاريع. وتشمل خدماتنا التشغيل والصيانة والنظافة المهنية والخدمات اللوجستية للمواقع، مع الالتزام بمعايير السلامة والجودة والامتثال.",
+        capabilitiesHeading: "قدرات التشغيل والدعم الميداني",
+        capabilities: [
+          "فرق التشغيل والصيانة (O&M)",
+          "فرق النظافة والصحة العامة",
+          "الخدمات اللوجستية للمواقع والدعم العام",
+        ],
+      },
+    },
     coreCapabilitiesHeading: "قدرات توفير الكوادر الفنية",
     coreDescription:
       "في شركة تميزنا المحدودة، نقدم حلولاً متدرجة لرأس المال البشري تلبي المتطلبات الدقيقة لمشاريع البنية التحتية واسعة النطاق وتكامل الأنظمة. ويدرك فريقنا أن نجاح المشروع يحتاج إلى قوى عاملة متوازنة، من الخبراء الهندسيين إلى فرق الدعم الميداني الموثوقة. نربط بين الاحتياجات الفنية وتوفير الكفاءات من خلال كوادر معتمدة وجاهزة للعمل ضمن ثلاث فئات متخصصة. وباختيار تميزنا، تستفيد مشاريعكم من فريق يمتلك الكفاءة الفنية ويلتزم بمعايير السلامة والجودة المطلوبة في مشاريع المملكة الرائدة.",
@@ -809,6 +1108,47 @@ const SERVICES_ARABIC: Record<string, ArabicServiceContent> = {
     heading: "خبرتنا في معالجة المياه والخدمات البيئية",
     description:
       "نقدم حلولاً للمياه والنفايات والاستدامة تحمي البيئة وتدعم طموحات المملكة لتحقيق الحياد الصفري، بدءاً من محطات المعالجة وإعادة التدوير وصولاً إلى الامتثال ومراقبة الانبعاثات.",
+    tabHeading: "الخدمات البيئية",
+    subDisciplines: {
+      "water-treatment": {
+        tabTitle: "معالجة المياه",
+        heading: "خبرتنا في معالجة المياه",
+        description:
+          "نحمي أنظمة المياه في المنشآت من خلال المعالجة الكيميائية والميكانيكية المتخصصة. ونغطي دورة المياه كاملة، من تنقية مياه الشرب إلى إعادة تدوير مياه الصرف للري. كما تساعدنا المراقبة الذكية وبروتوكولات المعالجة على الحفاظ على النظافة وحماية البنية التحتية والحد من الأثر البيئي.",
+        capabilitiesHeading: "قدرات معالجة المياه الأساسية",
+        capabilities: [
+          "تنقية مياه الشرب",
+          "معالجة مياه أبراج التبريد",
+          "أنظمة إعادة تدوير المياه الرمادية",
+          "تكامل محطات التناضح العكسي (RO)",
+          "إدارة محطات معالجة مياه الصرف الصحي (STP)",
+          "ترشيح مياه المسابح والنوافير",
+          "معالجة مياه الغلايات ودارات التدفئة",
+          "التحليل الآلي لجودة المياه",
+          "مكافحة الترسبات والتآكل",
+          "أنظمة تصريف مستدامة (SuDS)",
+        ],
+      },
+      "waste-management": {
+        tabTitle: "إدارة النفايات",
+        heading: "خبرتنا في إدارة النفايات والخدمات البيئية",
+        description:
+          "نحوّل إدارة النفايات إلى رافد للاستدامة من خلال حلول متكاملة تدعم المعايير البيئية والصحية. وتساعد تقنيات التتبع والفرز والاسترداد الذكية المنشآت على تجاوز أساليب التخلص التقليدية وتطبيق مبادئ الاقتصاد الدائري مع تقليل أثرها البيئي.",
+        capabilitiesHeading: "قدرات إدارة النفايات الأساسية",
+        capabilities: [
+          "تكامل الحاويات الذكية وأجهزة الاستشعار",
+          "أنظمة فرز النفايات من المصدر",
+          "تسميد النفايات العضوية",
+          "بروتوكولات النفايات الخطرة والطبية",
+          "تتبع النفايات المرتبط بنظام إدارة المبنى",
+          "دعم أنظمة جمع النفايات بالأنابيب الهوائية",
+          "تحويل نفايات البناء والهدم عن المرادم",
+          "برامج إعادة تدوير النفايات الإلكترونية",
+          "إدارة مصائد الشحوم والزيوت",
+          "استشارات استراتيجية الوصول إلى صفر نفايات",
+        ],
+      },
+    },
     coreCapabilitiesHeading: "قدرات معالجة المياه وتكامل الأنظمة",
     coreCapabilities: [
       "تنقية مياه الشرب",
@@ -870,6 +1210,7 @@ export function getLocalizedService(
     coreDescription: arabic.coreDescription ?? service.coreDescription,
     coreCapabilities: arabic.coreCapabilities ?? service.coreCapabilities,
     catalogHeading: arabic.catalogHeading,
+    tabHeading: arabic.tabHeading ?? service.tabHeading,
     subDisciplines: service.subDisciplines?.map((discipline) => ({
       ...discipline,
       ...arabic.subDisciplines?.[discipline.id],

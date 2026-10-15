@@ -384,7 +384,7 @@ export default function Navbar() {
                       <span className="nav-text-item nav-text-primary">
                         {menuLabel}
                       </span>
-                      <span className="nav-text-item nav-text-duplicate font-semibold text-primary">
+                      <span aria-hidden="true" className="nav-text-item nav-text-duplicate font-semibold text-primary">
                         {menuLabel}
                       </span>
                     </span>
@@ -411,7 +411,7 @@ export default function Navbar() {
                       >
                         {menuLabel}
                       </span>
-                      <span className="nav-text-item nav-text-duplicate font-semibold text-primary">
+                      <span aria-hidden="true" className="nav-text-item nav-text-duplicate font-semibold text-primary">
                         {menuLabel}
                       </span>
                     </span>
