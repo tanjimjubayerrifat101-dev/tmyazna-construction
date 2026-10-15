@@ -15,6 +15,10 @@ import sabLogo from "@/assets/partner/sab-new-logo.svg";
 import setraaLogo from "@/assets/partner/setra.png";
 import msajidonaLogo from "@/assets/partner/smc-footer-logo.svg";
 import rtccLogo from "@/assets/partner/job-azureerdge.png";
+import saudiMetersLogo from "@/assets/partner/smc-footer-logo.svg"
+import shapoorjiLogo from "@/assets/partner/icon_splogo_blue.svg"
+import muheelLogo from "@/assets/partner/muheel1.png"
+import rttLogo from "@/assets/partner/rtt.webp"
 
 export interface Partner {
   id: string;
@@ -56,11 +60,11 @@ export const PARTNER_CATEGORIES: PartnerCategory[] = [
     partners: [
       { id: "setraa", nameKey: "setraa", initials: "SA", logo: setraaLogo, href: "http://www.setraa.com" },
       { id: "alNabati", nameKey: "alNabati", initials: "AN" },
-      { id: "jordanPioneer", nameKey: "jordanPioneer", initials: "JP", logo: jordanPioneerLogo, href: "https://jordanpioneer.com/" },
+      { id: "jordanPioneer", nameKey: "jordanPioneer", initials: "JP", logo: jordanPioneerLogo, href: "https://jordanpioneer.com/" },    
       { id: "almoallam", nameKey: "almoallam", initials: "AM", logo: almoallamLogo, href: "https://almoallam.com/" },
-      { id: "saudiMeters", nameKey: "saudiMeters", initials: "SM" },
-      { id: "shapoorji", nameKey: "shapoorji", initials: "SP" },
-      { id: "rtcc", nameKey: "rtcc", initials: "RT", logo: rtccLogo, href: "https://www.rtcc.com.sa/" },
+      { id: "saudiMeters", nameKey: "saudiMeters", initials: "SM" ,logo: saudiMetersLogo, href: "https://saudimeters.com/"},
+      { id: "shapoorji", nameKey: "shapoorji", initials: "SP" , logo:shapoorjiLogo ,href: "https://www.shapoorjipallonji.com/" },
+      { id: "rtcc", nameKey: "rtcc", initials: "RT", logo: rttLogo, href: "https://www.rtcc.com.sa/" },
       { id: "saudiEmaar", nameKey: "saudiEmaar", initials: "SE" },
     ],
   },
@@ -68,7 +72,7 @@ export const PARTNER_CATEGORIES: PartnerCategory[] = [
     id: "facilitiesManagement",
     titleKey: "facilitiesManagement",
     partners: [
-      { id: "muheel", nameKey: "muheel", initials: "MU", href: "https://www.muheel.com/" },
+      { id: "muheel", nameKey: "muheel", initials: "MU", logo: muheelLogo , href: "https://www.muheel.com/" },
       { id: "awaco", nameKey: "awaco", initials: "AW", logo: awacoLogo, href: "https://awacosa.com/" },
       { id: "libanet", nameKey: "libanet", initials: "LI", logo: libanetLogo, href: "https://libanet.aero" },
       { id: "ncms", nameKey: "ncms", initials: "NC", href: "https://www.ncms.sa/ar" },
@@ -110,7 +114,7 @@ export const PARTNER_CATEGORIES: PartnerCategory[] = [
     titleKey: "nonProfit",
     partners: [
       { id: "kahatain", nameKey: "kahatain", initials: "KA", logo: kahatainLogo, href: "https://www.kahatain.org.sa/" },
-      { id: "msajidona", nameKey: "msajidona", initials: "MS", logo: msajidonaLogo, href: "https://store.msajidona.org.sa/" },
+      { id: "msajidona", nameKey: "msajidona", initials: "MS", logo: rtccLogo, href: "https://store.msajidona.org.sa/" },
     ],
   },
 ];

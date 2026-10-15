@@ -66,11 +66,11 @@ export default function Hero() {
             <span className="h-0.75 w-12 bg-primary" />
             <span className="h-0.75 w-5 bg-white/60" />
           </div>
-          <div className="w-full max-w-4xl">
+          <div className="min-h-[2.4em] w-full max-w-4xl">
             <SplitReveal
               key={activeSlide}
               as="h1"
-              className="text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] text-white uppercase rtl:font-sans rtl:leading-[1.2]"
+              className="text-[clamp(1.875rem,5vw,4.5rem)] leading-[1.05] text-white uppercase rtl:font-sans rtl:leading-[1.2]"
               stagger={0.06}
               duration={0.9}
             >
@@ -81,11 +81,15 @@ export default function Hero() {
               </span>
             </SplitReveal>
           </div>
-          {activeSlide === 1 || activeSlide === 2 ? (
-            <p className="mt-6 border-l-[3px] border-primary py-1 pl-4 text-lg font-semibold italic text-white sm:text-xl rtl:border-r-[3px] rtl:border-l-0 rtl:pl-0 rtl:pr-4">
-              {activeSlide === 1 ? t("slide2Subtitle") : t("slide3Subtitle")}
+          <div className="mt-6 flex h-20 items-start">
+            <p className="border-l-[3px] border-primary py-1 pl-4 text-lg font-semibold italic text-white sm:text-xl rtl:border-r-[3px] rtl:border-l-0 rtl:pl-0 rtl:pr-4">
+              {activeSlide === 1
+                ? t("slide2Subtitle")
+                : activeSlide === 2
+                  ? t("slide3Subtitle")
+                  : t("slide1Subtitle")}
             </p>
-          ) : null}
+          </div>
           {/* <div className={`${activeSlide === 0 ? "mt-6" : "mt-4"}`}>
             <FadeUp delay={0.2} duration={0.8} y={30}>
               <Button text={t("ctaButton")} href="/" />
