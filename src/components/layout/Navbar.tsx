@@ -574,12 +574,12 @@ export default function Navbar() {
             scroll={false}
             onClick={preserveHomeScroll}
             dir={locale === "ar" ? "rtl" : "ltr"}
-            className="group relative inline-flex h-full shrink-0 items-center justify-center overflow-hidden px-3 text-sm font-semibold text-primary transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            className="group relative inline-flex h-full shrink-0 items-center justify-center overflow-hidden px-3 text-sm font-semibold text-secondary transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <span
               className={`absolute inset-0 ${
                 locale === "ar"
-                  ? "-translate-x-[100%]"
+                  ? "translate-x-[-105%]"
                   : "translate-x-[101%]"
               } bg-primary transition-transform duration-300 ease-out group-hover:translate-x-0 group-focus-visible:translate-x-0`}
             />
