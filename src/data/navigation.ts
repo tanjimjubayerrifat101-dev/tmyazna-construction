@@ -25,8 +25,9 @@ export const NAV: NavItem[] = [
 
       { groupKey: 'quality', items: [
         { key: 'certificates', href: '/credential#certificates', icon: Award },
-        { key: 'accreditations', href: '/credential#compliance', icon: ShieldCheck },
-        { key: 'vendorRegistrations', href: '/credential#vendor', icon: ShieldCheck }
+        { key: 'vendorRegistrations', href: '/credential#vendor', icon: ShieldCheck },
+        { key: 'accreditations', href: '/credential#compliance', icon: ShieldCheck }
+        
       ]},
     ],
   },
