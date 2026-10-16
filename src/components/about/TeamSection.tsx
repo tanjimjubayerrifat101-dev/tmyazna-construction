@@ -31,37 +31,37 @@ export default function TeamSection() {
     {
       name: tAbout("leaderName"),
       role: tAbout("leaderRole"),
-      bio: "Leading strategic growth and project excellence across Saudi Arabia's premier civil and infrastructure developments with over two decades of engineering leadership.",
+      bio: t("bios.leader"),
       image: leaderImg,
     },
     {
       name: t("tba"),
       role: t("roles.coo"),
-      bio: "Overseeing operations, site execution, quality assurance, and multidisciplinary coordination across all ongoing national projects.",
+      bio: t("bios.coo"),
       image: member2Img,
     },
     {
       name: t("tba"),
       role: t("roles.cfo"),
-      bio: "Managing capital allocation, corporate governance, fiscal discipline, and financial sustainability across regional contracts.",
+      bio: t("bios.cfo"),
       image: member3Img,
     },
     {
       name: t("tba"),
       role: t("roles.cco"),
-      bio: "Driving client relationships, strategic partnerships, procurement, and commercial bidding for landmark developments.",
+      bio: t("bios.cco"),
       image: member4Img,
     },
     {
       name: t("tba"),
       role: t("roles.cso"),
-      bio: "Guiding company alignment with Saudi Vision 2030, sustainable transformation, and new market expansion.",
+      bio: t("bios.cso"),
       image: member5Img,
     },
     {
       name: t("tba"),
       role: t("roles.cpo"),
-      bio: "Directing high-value engineering execution, project lifecycles, contractor networks, and on-time commissioning.",
+      bio: t("bios.cpo"),
       image: member6Img,
     },
   ];

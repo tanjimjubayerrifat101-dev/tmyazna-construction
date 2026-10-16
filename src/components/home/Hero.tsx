@@ -66,11 +66,11 @@ export default function Hero() {
             <span className="h-0.75 w-12 bg-primary" />
             <span className="h-0.75 w-5 bg-white/60" />
           </div>
-          <div className="min-h-[2.4em] w-full max-w-4xl">
+          <div className="h-16 w-full max-w-5xl sm:h-20 md:h-26 lg:h-34 xl:h-38">
             <SplitReveal
               key={activeSlide}
               as="h1"
-              className="text-[clamp(1.875rem,5vw,4.5rem)] leading-[1.05] text-white uppercase rtl:font-sans rtl:leading-[1.2]"
+              className="text-[clamp(1.5rem,5vw,4.5rem)] leading-[1.05] text-white uppercase rtl:font-sans rtl:leading-[1.2]"
               stagger={0.06}
               duration={0.9}
             >
@@ -81,8 +81,8 @@ export default function Hero() {
               </span>
             </SplitReveal>
           </div>
-          <div className="mt-6 flex h-20 items-start">
-            <p className="border-l-[3px] border-primary py-1 pl-4 text-lg font-semibold italic text-white sm:text-xl rtl:border-r-[3px] rtl:border-l-0 rtl:pl-0 rtl:pr-4">
+          <div className="mt-6 flex h-28 items-start sm:h-24 lg:h-16">
+            <p className="border-l-[3px] border-primary py-1 pl-4 text-base font-semibold italic leading-6 text-white sm:text-lg rtl:border-r-[3px] rtl:border-l-0 rtl:pl-0 rtl:pr-4">
               {activeSlide === 1
                 ? t("slide2Subtitle")
                 : activeSlide === 2

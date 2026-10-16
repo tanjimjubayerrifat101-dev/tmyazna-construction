@@ -85,14 +85,14 @@ export default function CustomCursor() {
       {/* 1. Small Solid Dot at exact cursor point */}
       <div
         ref={dotRef}
-        className="fixed top-0 start-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none will-change-transform"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none will-change-transform"
       />
 
       {/* 2. Outer Circle (Smaller size, border only, completely transparent inside, auto-inverts color, zero shadow) */}
       <div
         ref={ringRef}
         className={`
-          fixed top-0 start-0 rounded-full border border-white bg-transparent pointer-events-none will-change-transform
+          fixed top-0 left-0 rounded-full border border-white bg-transparent pointer-events-none will-change-transform
           transition-[width,height,border-width] duration-200 ease-out
           ${
             isHoveringImage
