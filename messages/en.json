@@ -481,5 +481,12 @@
     "successDesc": "Thank you for applying. Our talent acquisition team will review your application and get in touch.",
     "questions": "Questions?",
     "questionsSub": "Reach our talent team directly:"
+  },
+  "Presence":{
+    "breadcrumb": "Presence",
+    "eyebrow": "PRESENCE",
+    "heading": "Projects across the Kingdom of Saudi Arabia",
+    "subheading": "Click a region to explore its projects"    
   }
+
 }
